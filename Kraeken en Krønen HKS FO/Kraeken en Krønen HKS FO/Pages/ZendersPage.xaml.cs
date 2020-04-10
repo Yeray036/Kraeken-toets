@@ -27,7 +27,93 @@ namespace Kraeken_en_Krønen_HKS_FO
             InitializeComponent();
             zendersClass.GetKKRock();
             KKRockZenderNaam.Content = ZenderNames.KkRock;
-            KKRockzenderOmschrijving.Content = ZenderNames.KkRockOmschrijving;
+            KKRockOmschrijving.Content = ZenderNames.KkRockOmschrijving;
+
+            zendersClass.GetKKSoul();
+            KKSoulZenderNaam.Content = ZenderNames.KkSoul;
+            KKSoulOmschrijving.Content = ZenderNames.KkSoulOmschrijving;
+
+            zendersClass.GetKKLounge();
+            KKLoungeZenderNaam.Content = ZenderNames.KkLounge;
+            KKLoungeOmschrijving.Content = ZenderNames.KkLoungeOmschrijving;
+
+            zendersClass.GetKKAlternative();
+            KKAlternativeZenderNaam.Content = ZenderNames.KkAlternative;
+            KKAlternativeOmschrijving.Content = ZenderNames.KkAlternativeOmschrijving;
+
+            zendersClass.GetKKCountry();
+            KKCountryZenderNaam.Content = ZenderNames.KkCountry;
+            KKCountryOmschrijving.Content = ZenderNames.KkCountryOmschrijving;
+
+            zendersClass.GetKKGrasshopper();
+            KKGrasshopperZenderNaam.Content = ZenderNames.KkGrasshoper;
+            KKGrasshopperOmschrijving.Content = ZenderNames.KkGrasshopperOmschrijving;
+
+            zendersClass.GetKKHipHop();
+            KKHipHopZenderNaam.Content = ZenderNames.KkHipHop;
+            KKHipHopOmschrijving.Content = ZenderNames.KkHipHopOmschrijving;
+
+            zendersClass.GetKKMetal();
+            KKMetalZenderNaam.Content = ZenderNames.KkMetal;
+            KKMetalOmschrijving.Content = ZenderNames.KkMetalOmschrijving;
+
+            zendersClass.GetKKWorkout();
+            KKWorkoutZenderNaam.Content = ZenderNames.KkWorkout;
+            KKWorkoutOmschrijving.Content = ZenderNames.KkWorkoutOmschrijving;
         }
+
+        private void CreateNewZender(object sender, RoutedEventArgs e)
+        {
+            if (NewZenderNaam.Text != String.Empty && NewZenderOmschrijving.Text != String.Empty)
+            {
+                Grid4.Children.Add(new StackPanel
+                {
+                    Orientation = Orientation.Horizontal
+                });
+                Grid4.Children.Add(new Border
+                {
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    BorderThickness = new Thickness(2, 2, 2, 2),
+                    BorderBrush = new SolidColorBrush(new Color { R = 98, G = 98, B = 106, A = byte.MaxValue })
+                });
+                Grid4.Children.Add(new StackPanel
+                { 
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    Orientation = Orientation.Vertical,
+                    Margin = new Thickness(5, 0, 5, 5)
+                });
+                Grid4.Children.Add(new Label
+                { 
+                    FontSize = 20,
+                    Foreground = Brushes.White,
+                    Name = NewZenderNaam.Text + "ZenderNaam",
+                    Content = NewZenderNaam.Text
+                });
+                Grid4.Children.Add(new Label
+                {
+                    FontSize = 20,
+                    Foreground = Brushes.White,
+                    Name = NewZenderOmschrijving.Text + "Omschrijving",
+                    Content = NewZenderOmschrijving.Text
+                });
+            }
+            else
+            {
+                MessageBox.Show("Geen zender informatie");
+            }
+        }
+
+        /*<Border HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="#FF62626A">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKHipHop" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKHipHopZenderNaam"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKHipHopOmschrijving"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                */
     }
 }

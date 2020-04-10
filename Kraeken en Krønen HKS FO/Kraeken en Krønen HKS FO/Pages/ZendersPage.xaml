@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kraeken_en_Krønen_HKS_FO"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1080"
       Title="ZendersPage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -20,6 +20,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -29,12 +33,12 @@
                         <Label Content="Zender toevoegen" FontSize="20px" Foreground="White" Margin="10,0,0,0"/>
                         
                         <Label Content="Zender" Foreground="White" FontSize="20px" Margin="10,20,0,0"/>
-                        <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,0,0,0"/>
+                        <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,0,0,0" x:Name="NewZenderNaam"/>
 
                         <Label Content="Omschrijving" Foreground="White" FontSize="20px" Margin="10,20,0,0"/>
-                        <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,0,0,0"/>
+                        <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,0,0,0" x:Name="NewZenderOmschrijving"/>
 
-                        <Button HorizontalAlignment="Left" Margin="10,20,0,10" >
+                        <Button HorizontalAlignment="Left" Margin="10,20,0,10" Click="CreateNewZender" >
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="SendOutline" Width="20px" Height="25px"/>
                                 <Label VerticalAlignment="Center" FontSize="15px" Foreground="#DDFFFFFF">Verstuur</Label>
@@ -46,12 +50,12 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="0,20,0,0" HorizontalAlignment="Center">
+        <Grid Grid.Row="1" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
             <StackPanel Margin="20,0" Orientation="Horizontal">
                 <Border HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="#FF62626A">
                     <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKSoul" Margin="5,0,5,5">
-                        <Label FontSize="20px" Foreground="White"/>
-                        <Label FontSize="20px" Foreground="White"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKSoulZenderNaam"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKSoulOmschrijving"/>
                         <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
                             <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
@@ -63,7 +67,7 @@
                 <Border HorizontalAlignment="Center" BorderThickness="2px" BorderBrush="#FF62626A">
                     <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKRock" Margin="5,0,5,5">
                         <Label FontSize="20px" Foreground="White" x:Name="KKRockZenderNaam" Margin="0"/>
-                        <Label FontSize="20px" Foreground="White" x:Name="KKRockzenderOmschrijving" Margin="0"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKRockOmschrijving" Margin="0"/>
                         <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
                             <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
@@ -74,8 +78,8 @@
 
                 <Border HorizontalAlignment="Right" BorderThickness="2px" BorderBrush="#FF62626A">
                     <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKLounge" Margin="5,0,5,5">
-                        <Label FontSize="20px" Foreground="White"/>
-                        <Label FontSize="20px" Foreground="White"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKLoungeZenderNaam"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKLoungeOmschrijving"/>
                         <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
                             <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
@@ -85,6 +89,89 @@
                 </Border>
             </StackPanel>
         </Grid>
-        
+
+        <Grid Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <StackPanel Margin="20,0" Orientation="Horizontal">
+                <Border HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="#FF62626A">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKAlternative" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKAlternativeZenderNaam"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKAlternativeOmschrijving"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border HorizontalAlignment="Center" BorderThickness="2px" BorderBrush="#FF62626A">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKCountry" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKCountryZenderNaam" Margin="0"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKCountryOmschrijving" Margin="0"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border HorizontalAlignment="Right" BorderThickness="2px" BorderBrush="#FF62626A">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKGrasshopper" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKGrasshopperZenderNaam"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKGrasshopperOmschrijving"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <StackPanel Margin="20,0" Orientation="Horizontal">
+                <Border HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="#FF62626A">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKHipHop" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKHipHopZenderNaam"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKHipHopOmschrijving"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border HorizontalAlignment="Center" BorderThickness="2px" BorderBrush="#FF62626A">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKMetal" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKMetalZenderNaam" Margin="0"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKMetalOmschrijving" Margin="0"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border HorizontalAlignment="Right" BorderThickness="2px" BorderBrush="#FF62626A">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKWorkout" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKWorkoutZenderNaam"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKWorkoutOmschrijving"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="Grid4">
+            
+        </Grid>
     </Grid>
 </Page>
