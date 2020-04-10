@@ -22,10 +22,24 @@ namespace Kraeken_en_Krønen_HKS_FO
     public partial class MainWindow : Window
     {
         public string cs = ConfigurationManager.ConnectionStrings["Kraeken"].ConnectionString;
+        ZendersPage zendersPage = new ZendersPage();
+        MainWindow home;
+
+        public MainWindow Home { get => home; set => home = value; }
 
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenZendersPage(object sender, RoutedEventArgs e)
+        {
+            pageFrame.Navigate(zendersPage);
+        }
+
+        private void OpenHomePage(object sender, RoutedEventArgs e)
+        {
+            pageFrame.Navigate(Home);
         }
     }
 }
