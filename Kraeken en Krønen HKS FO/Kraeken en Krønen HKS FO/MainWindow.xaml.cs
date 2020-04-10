@@ -21,7 +21,6 @@ namespace Kraeken_en_Krønen_HKS_FO
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string cs = ConfigurationManager.ConnectionStrings["Kraeken"].ConnectionString;
         ZendersPage zendersPage = new ZendersPage();
         MainWindow home;
 

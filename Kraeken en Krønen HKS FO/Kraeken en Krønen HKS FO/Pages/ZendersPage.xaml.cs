@@ -20,9 +20,14 @@ namespace Kraeken_en_Krønen_HKS_FO
     /// </summary>
     public partial class ZendersPage : Page
     {
+        Zenders zendersClass = new Zenders();
+
         public ZendersPage()
         {
             InitializeComponent();
+            zendersClass.GetKKRock();
+            KKRockZenderNaam.Content = ZenderNames.KkRock;
+            KKRockzenderOmschrijving.Content = ZenderNames.KkRockOmschrijving;
         }
     }
 }

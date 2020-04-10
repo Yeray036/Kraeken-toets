@@ -49,37 +49,37 @@
         <Grid Grid.Row="1" Margin="0,20,0,0" HorizontalAlignment="Center">
             <StackPanel Margin="20,0" Orientation="Horizontal">
                 <Border HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="#FF62626A">
-                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKSoul">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKSoul" Margin="5,0,5,5">
                         <Label FontSize="20px" Foreground="White"/>
                         <Label FontSize="20px" Foreground="White"/>
-                        <Button FontSize="12px" Foreground="White" Content="programmaoverzicht" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Button FontSize="12px" Foreground="White" Content="wijzig" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                            <Button FontSize="12px" Foreground="White" Content="verwijder" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
 
                 <Border HorizontalAlignment="Center" BorderThickness="2px" BorderBrush="#FF62626A">
-                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKRock">
-                        <Label FontSize="20px" Foreground="White"/>
-                        <Label FontSize="20px" Foreground="White"/>
-                        <Button FontSize="12px" Foreground="White" Content="programmaoverzicht" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Button FontSize="12px" Foreground="White" Content="wijzig" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                            <Button FontSize="12px" Foreground="White" Content="verwijder" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKRock" Margin="5,0,5,5">
+                        <Label FontSize="20px" Foreground="White" x:Name="KKRockZenderNaam" Margin="0"/>
+                        <Label FontSize="20px" Foreground="White" x:Name="KKRockzenderOmschrijving" Margin="0"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
 
                 <Border HorizontalAlignment="Right" BorderThickness="2px" BorderBrush="#FF62626A">
-                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKLounge">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKLounge" Margin="5,0,5,5">
                         <Label FontSize="20px" Foreground="White"/>
                         <Label FontSize="20px" Foreground="White"/>
-                        <Button FontSize="12px" Foreground="White" Content="programmaoverzicht" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Button FontSize="12px" Foreground="White" Content="wijzig" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                            <Button FontSize="12px" Foreground="White" Content="verwijder" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                        <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
