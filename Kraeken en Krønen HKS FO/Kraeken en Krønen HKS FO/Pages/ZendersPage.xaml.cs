@@ -50,43 +50,41 @@ namespace Kraeken_en_Krønen_HKS_FO
         {
             InitializeComponent();
 
-            zendersClass.GetAllChannels();
+            try
+            {
+                zendersClass.GetAllChannels();
 
-            zendersClass.GetKKRock();
-            KKRockZenderNaam.Content = ZenderNames.MusicZenders[0];
-            KKRockOmschrijving.Content = ZenderNames.KkRockOmschrijving;
+                KKRockZenderNaam.Content = ZenderNames.MusicZenders[0];
+                KKRockOmschrijving.Content = ZenderNames.Musicdescription[0];
 
-            zendersClass.GetKKSoul();
-            KKSoulZenderNaam.Content = ZenderNames.MusicZenders[1];
-            KKSoulOmschrijving.Content = ZenderNames.KkSoulOmschrijving;
+                KKSoulZenderNaam.Content = ZenderNames.MusicZenders[1];
+                KKSoulOmschrijving.Content = ZenderNames.Musicdescription[1];
 
-            zendersClass.GetKKLounge();
-            KKLoungeZenderNaam.Content = ZenderNames.KkLounge;
-            KKLoungeOmschrijving.Content = ZenderNames.KkLoungeOmschrijving;
+                KKLoungeZenderNaam.Content = ZenderNames.MusicZenders[2];
+                KKLoungeOmschrijving.Content = ZenderNames.Musicdescription[2];
 
-            zendersClass.GetKKAlternative();
-            KKAlternativeZenderNaam.Content = ZenderNames.KkAlternative;
-            KKAlternativeOmschrijving.Content = ZenderNames.KkAlternativeOmschrijving;
+                KKAlternativeZenderNaam.Content = ZenderNames.MusicZenders[3];
+                KKAlternativeOmschrijving.Content = ZenderNames.Musicdescription[3];
 
-            zendersClass.GetKKCountry();
-            KKCountryZenderNaam.Content = ZenderNames.KkCountry;
-            KKCountryOmschrijving.Content = ZenderNames.KkCountryOmschrijving;
+                KKCountryZenderNaam.Content = ZenderNames.MusicZenders[4];
+                KKCountryOmschrijving.Content = ZenderNames.Musicdescription[4];
 
-            zendersClass.GetKKGrasshopper();
-            KKGrasshopperZenderNaam.Content = ZenderNames.KkGrasshoper;
-            KKGrasshopperOmschrijving.Content = ZenderNames.KkGrasshopperOmschrijving;
+                KKGrasshopperZenderNaam.Content = ZenderNames.MusicZenders[5];
+                KKGrasshopperOmschrijving.Content = ZenderNames.Musicdescription[5];
 
-            zendersClass.GetKKHipHop();
-            KKHipHopZenderNaam.Content = ZenderNames.KkHipHop;
-            KKHipHopOmschrijving.Content = ZenderNames.KkHipHopOmschrijving;
+                KKHipHopZenderNaam.Content = ZenderNames.MusicZenders[6];
+                KKHipHopOmschrijving.Content = ZenderNames.Musicdescription[6];
 
-            zendersClass.GetKKMetal();
-            KKMetalZenderNaam.Content = ZenderNames.KkMetal;
-            KKMetalOmschrijving.Content = ZenderNames.KkMetalOmschrijving;
+                KKMetalZenderNaam.Content = ZenderNames.MusicZenders[7];
+                KKMetalOmschrijving.Content = ZenderNames.Musicdescription[7];
 
-            zendersClass.GetKKWorkout();
-            KKWorkoutZenderNaam.Content = ZenderNames.KkWorkout;
-            KKWorkoutOmschrijving.Content = ZenderNames.KkWorkoutOmschrijving;
+                KKWorkoutZenderNaam.Content = ZenderNames.MusicZenders[8];
+                KKWorkoutOmschrijving.Content = ZenderNames.Musicdescription[8];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }        
         }
 
         private void CreateNewZender(object sender, RoutedEventArgs e)
