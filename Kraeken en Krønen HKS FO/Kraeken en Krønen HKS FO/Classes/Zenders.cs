@@ -159,10 +159,38 @@ namespace Kraeken_en_Krønen_HKS_FO
             get { return KKWorkoutOmschrijving; }
             set { KKWorkoutOmschrijving = value; }
         }
+
+        private static List<string> MusicChannels = new List<string>();
+
+        public static List<string> MusicZenders
+        {
+            get { return MusicChannels; }
+            set { MusicChannels = value; }
+        }
     }
 
     class Zenders
     {
+        MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(ConnectionVariables.cs);
+
+        public void GetAllChannels()
+        {
+            var zenderquery = "select zendernaam, omschrijving from zenders";
+
+            var cmd = new MySqlCommand(zenderquery, conn);
+
+            conn.Open();
+            var queryresult = cmd.ExecuteReader();
+            if (queryresult.HasRows)
+            {
+                while (queryresult.Read())
+                {
+                    ZenderNames.MusicZenders.Add(queryresult.GetString(0).ToString());
+                }
+            }
+            conn.Close();
+        }
+
         public void GetKKRock()
         {
             var zenderquery = "select zendernaam, omschrijving from zenders where zenderId=3;";

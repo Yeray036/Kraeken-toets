@@ -90,6 +90,9 @@
     <Compile Include="Pages\ZendersPage.xaml.cs">
       <DependentUpon>ZendersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\NewZenderLayout.xaml.cs">
+      <DependentUpon>NewZenderLayout.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +106,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\ZendersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\NewZenderLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -30,3 +30,5 @@ D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kr
 D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.csprojAssemblyReference.cache
 D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ZendersPage.g.cs
 D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ZendersPage.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\UserControls\NewZenderLayout.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\UserControls\NewZenderLayout.baml

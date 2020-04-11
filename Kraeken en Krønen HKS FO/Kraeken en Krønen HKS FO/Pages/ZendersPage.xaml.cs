@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kraeken_en_Krønen_HKS_FO.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,24 +19,45 @@ namespace Kraeken_en_Krønen_HKS_FO
     /// <summary>
     /// Interaction logic for ZendersPage.xaml
     /// </summary>
+    /// 
+
+    class ZenderInformation
+    {
+        private static string ZenderTitel = "";
+
+        public static string ZenderTitelText
+        {
+            get { return ZenderTitel; }
+            set { ZenderTitel = value; }
+        }
+
+        private static string ZenderOmschrijving = "";
+
+        public static string ZenderOmschrijvingText
+        {
+            get { return ZenderOmschrijving; }
+            set { ZenderOmschrijving = value; }
+        }
+    }
+
     public partial class ZendersPage : Page
     {
         Zenders zendersClass = new Zenders();
+
+        int gridCount = 0;
 
         public ZendersPage()
         {
             InitializeComponent();
 
-            NewZender1.Visibility = Visibility.Hidden;
-            NewZender2.Visibility = Visibility.Hidden;
-            NewZender3.Visibility = Visibility.Hidden;
+            zendersClass.GetAllChannels();
 
             zendersClass.GetKKRock();
-            KKRockZenderNaam.Content = ZenderNames.KkRock;
+            KKRockZenderNaam.Content = ZenderNames.MusicZenders[0];
             KKRockOmschrijving.Content = ZenderNames.KkRockOmschrijving;
 
             zendersClass.GetKKSoul();
-            KKSoulZenderNaam.Content = ZenderNames.KkSoul;
+            KKSoulZenderNaam.Content = ZenderNames.MusicZenders[1];
             KKSoulOmschrijving.Content = ZenderNames.KkSoulOmschrijving;
 
             zendersClass.GetKKLounge();
@@ -71,38 +93,24 @@ namespace Kraeken_en_Krønen_HKS_FO
         {
             if (NewZenderNaam.Text != String.Empty && NewZenderOmschrijving.Text != String.Empty)
             {
-                StackPanel stackpanel = new StackPanel();
-                stackpanel.Orientation = Orientation.Horizontal;
+                NewZenderLayout newZenderLayout = new NewZenderLayout();
 
-                Border border = new Border();
-                border.HorizontalAlignment = HorizontalAlignment.Center;
-                border.BorderThickness = new Thickness(2, 2, 2, 2);
-                border.BorderBrush = new SolidColorBrush(new Color { R = 98, G = 98, B = 106, A = byte.MaxValue });
-
-                StackPanel stackpanel2 = new StackPanel();
-                stackpanel2.HorizontalAlignment = HorizontalAlignment.Center;
-                stackpanel2.Orientation = Orientation.Vertical;
-                stackpanel2.Margin = new Thickness(5, 0, 5, 5);
-
-                Label newLabel = new Label();
-                newLabel.FontSize = 20;
-                newLabel.Foreground = Brushes.White;
-                newLabel.Name = NewZenderNaam.Text + "ZenderNaam";
-                newLabel.Content = NewZenderNaam.Text;
-
-                var newLabel2 = new Label();
-                newLabel2.FontSize = 20;
-                newLabel2.Foreground = Brushes.White;
-                newLabel2.Name = NewZenderOmschrijving.Text + "Omschrijving";
-                newLabel2.Content = NewZenderOmschrijving.Text;
-
-                stackpanel2.Children.Add(newLabel);
-                stackpanel2.Children.Add(newLabel2);
-                border.Child = stackpanel2;
-                stackpanel.Children.Add(border);
-                Grid5.Children.Add(stackpanel);
-
-
+                if (gridCount <= 2)
+                {
+                    ZenderInformation.ZenderTitelText = NewZenderNaam.Text;
+                    ZenderInformation.ZenderOmschrijvingText = NewZenderOmschrijving.Text;
+                    newZenderLayout.PlaceZenderInfoInLayout();
+                    ExtraZender.Children.Add(newZenderLayout);
+                    int totalcount = gridCount + 1;
+                    gridCount = totalcount;
+                }
+                else
+                {
+                    ZenderInformation.ZenderTitelText = NewZenderNaam.Text;
+                    ZenderInformation.ZenderOmschrijvingText = NewZenderOmschrijving.Text;
+                    newZenderLayout.PlaceZenderInfoInLayout();
+                    ExtraZender2.Children.Add(newZenderLayout);
+                }
             }
             else
             {
@@ -111,76 +119,4 @@ namespace Kraeken_en_Krønen_HKS_FO
         }
     }
 }
-
-/*<Border HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="#FF62626A">
-            <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="KKHipHop" Margin="5,0,5,5">
-                <Label FontSize="20px" Foreground="White" x:Name="KKHipHopZenderNaam"/>
-                <Label FontSize="20px" Foreground="White" x:Name="KKHipHopOmschrijving"/>
-                <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-                    <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
-                    <Button FontSize="20px" Foreground="White" Content="verwijder"/>
-                </StackPanel>
-            </StackPanel>
-        </Border>
-
-
-Grid4.Children.Add(new StackPanel
-        {
-            Orientation = Orientation.Horizontal,
-        });
-        Grid4.Children.Add(new Border
-        {
-            HorizontalAlignment = HorizontalAlignment.Left,
-            BorderThickness = new Thickness(2, 2, 2, 2),
-            BorderBrush = new SolidColorBrush(new Color { R = 98, G = 98, B = 106, A = byte.MaxValue })
-        });
-        Grid4.Children.Add(new StackPanel
-        { 
-            HorizontalAlignment = HorizontalAlignment.Left,
-            Orientation = Orientation.Vertical,
-            Margin = new Thickness(5, 0, 5, 5)
-        });
-        Grid4.Children.Add(new Label
-        { 
-            FontSize = 20,
-            Foreground = Brushes.White,
-            Name = NewZenderNaam.Text + "ZenderNaam",
-            Content = NewZenderNaam.Text
-        });
-        Grid4.Children.Add(new Label
-        {
-            FontSize = 20,
-            Foreground = Brushes.White,
-            Name = NewZenderOmschrijving.Text + "Omschrijving",
-            Content = NewZenderOmschrijving.Text
-        });
-
-
-
-     if (NewZender1.Visibility != Visibility.Visible)
-                {
-                    NewZenderNaam1.Content = NewZenderNaam.Text;
-                    NewOmschrijving1.Content = NewZenderOmschrijving.Text;
-                    NewZender1.Visibility = Visibility.Visible;
-                    NewZenderNaam.Text = String.Empty;
-                    NewZenderOmschrijving.Text = String.Empty;
-                }
-                else if (NewZender2.Visibility != Visibility.Visible)
-                {
-                    NewZenderNaam2.Content = NewZenderNaam.Text;
-                    NewOmschrijving2.Content = NewZenderOmschrijving.Text;
-                    NewZender2.Visibility = Visibility.Visible;
-                    NewZenderNaam.Text = String.Empty;
-                    NewZenderOmschrijving.Text = String.Empty;
-                }
-                else if (NewZender3.Visibility != Visibility.Visible)
-                {
-                    NewZenderNaam3.Content = NewZenderNaam.Text;
-                    NewOmschrijving3.Content = NewZenderOmschrijving.Text;
-                    NewZender3.Visibility = Visibility.Visible;
-                    NewZenderNaam.Text = String.Empty;
-                    NewZenderOmschrijving.Text = String.Empty;
-                }
-        */
 
