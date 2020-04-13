@@ -33,6 +33,10 @@ namespace Kraeken_en_Krønen_HKS_FO
 
         private void OpenZendersPage(object sender, RoutedEventArgs e)
         {
+            if (ZenderInformation.ZenderCounter != ZenderNames.MusicZenders.Count)
+            {
+                zendersPage.PlaceZendersInGrid();
+            }
             pageFrame.Navigate(zendersPage);
         }
 

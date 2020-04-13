@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,8 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
     /// </summary>
     public partial class NewZenderLayout : UserControl
     {
+        ZenderNames ZenderNames = new ZenderNames();
+
         public NewZenderLayout()
         {
             InitializeComponent();
@@ -27,8 +30,7 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
 
         public void PlaceZenderInfoInLayout()
         {
-            NewZender.Text = ZenderInformation.ZenderTitelText;
-            NewOmschrijving.Text = ZenderInformation.ZenderOmschrijvingText;
+           
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Kraeken_en_Krønen_HKS_FO
 {
@@ -64,6 +65,7 @@ namespace Kraeken_en_Krønen_HKS_FO
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 Console.WriteLine(e.Message);
             }
         }
