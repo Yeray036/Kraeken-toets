@@ -21,7 +21,7 @@ namespace Kraeken_en_Krønen_HKS_FO
     /// </summary>
     public partial class MainWindow : Window
     {
-        ZendersPage zendersPage = new ZendersPage();
+        Zenders zenders = new Zenders();
         MainWindow home;
 
         public MainWindow Home { get => home; set => home = value; }
@@ -33,9 +33,24 @@ namespace Kraeken_en_Krønen_HKS_FO
 
         private void OpenZendersPage(object sender, RoutedEventArgs e)
         {
-            if (ZenderInformation.ZenderCounter != ZenderNames.MusicZenders.Count)
+            ZenderNames.MusicZenders.Clear();
+            ZendersPage zendersPage = new ZendersPage();
+            try
             {
-                zendersPage.PlaceZendersInGrid();
+                if (ZenderNames.MusicZenders.Count != ZenderNames.MusicZenders.Count)
+                {
+                    zendersPage.ExtraZender.Children.Clear();
+                    zendersPage.ExtraZender1.Children.Clear();
+                    zendersPage.ExtraZender2.Children.Clear();
+                    zendersPage.ExtraZender3.Children.Clear();
+                    zendersPage.ExtraZender4.Children.Clear();
+                    zendersPage.ExtraZender5.Children.Clear();
+                    zendersPage.PlaceZendersInGrid();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
             }
             pageFrame.Navigate(zendersPage);
         }
