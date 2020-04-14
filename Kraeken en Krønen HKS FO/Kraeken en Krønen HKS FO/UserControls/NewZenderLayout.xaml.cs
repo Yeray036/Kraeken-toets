@@ -34,12 +34,13 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
             string currentZender;
             currentZender = this.Name.Remove(0, 6);
             currentZenderId = Int32.Parse(currentZender);
-            MessageBoxResult result = MessageBox.Show("Wil je deze zender verwijderen?", $"Delete zender: {currentZenderId}", MessageBoxButton.YesNo);
+
+            MessageBoxResult result = MessageBox.Show("Wil je deze zender verwijderen?", $"Verwijder zender: {currentZenderId}", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     zenderClass.DeleteZenderFromDb(currentZenderId);
-                    zenderClass.GetAllChannels();
+                    ((Panel)this.Parent).Children.Remove(this);
                     break;
                 case MessageBoxResult.No:
                     break;

@@ -92,11 +92,11 @@ namespace Kraeken_en_Krønen_HKS_FO
             ConnectionVariables.conn.Close();
             if (queryResult < 0)
             {
-                MessageBox.Show($"Error while inserting into {ConnectionVariables.conn.Database} DB");
+                MessageBox.Show($"Fout kan geen zender toevoegen in {ConnectionVariables.conn.Database} DB");
             }
             else
             {
-                MessageBox.Show($"New zender: {ZenderInformation.ZenderTitelText} added to {ConnectionVariables.conn.Database} DB");
+                MessageBox.Show($"Nieuwe zender: {ZenderInformation.ZenderTitelText} toegevoegd aan {ConnectionVariables.conn.Database} DB");
             }
         }
 
@@ -105,16 +105,18 @@ namespace Kraeken_en_Krønen_HKS_FO
             var query = $"DELETE FROM zenders WHERE zenderId={zenderId}";
             var cmd = new MySqlCommand(query, ConnectionVariables.conn);
 
+            ZendersPage zendersPage = new ZendersPage();
+
             ConnectionVariables.conn.Open();
             var queryResult = cmd.ExecuteNonQuery();
             ConnectionVariables.conn.Close();
             if (queryResult < 0)
             {
-                MessageBox.Show("No zender found to be deleted");
+                MessageBox.Show("Geen zender gevonden om te verwijderen");
             }
             else
             {
-                MessageBox.Show($"Zender with id: {zenderId} has been deleted");
+                MessageBox.Show($"Zender met id: {zenderId} is verwijderd");
             }
         }
     }
