@@ -66,7 +66,6 @@ namespace Kraeken_en_Krønen_HKS_FO
         public ZendersPage()
         {
             InitializeComponent();
-
             try
             {
                 zendersClass.GetAllChannels();
@@ -127,7 +126,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                             NewZenderLayout newZenderLayout = new NewZenderLayout();
                             newZenderLayout.NewZender.Text = ZenderNames.MusicZenders[ZenderInformation.y].ToString();
                             newZenderLayout.NewOmschrijving.Text = ZenderNames.Musicdescription[ZenderInformation.y].ToString();
-                            newZenderLayout.Name = "zender" + ZenderInformation.y;
+                            newZenderLayout.Name = "zender" + ZenderNames.ZendersId[ZenderInformation.y];
                             ExtraZender.Children.Add(newZenderLayout);
                             totalCount = gridCount + 1;
                             gridCount = totalCount;
@@ -139,7 +138,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                                 NewZenderLayout newZenderLayout = new NewZenderLayout();
                                 newZenderLayout.NewZender.Text = ZenderNames.MusicZenders[ZenderInformation.y].ToString();
                                 newZenderLayout.NewOmschrijving.Text = ZenderNames.Musicdescription[ZenderInformation.y].ToString();
-                                newZenderLayout.Name = "zender" + ZenderInformation.y;
+                                newZenderLayout.Name = "zender" + ZenderNames.ZendersId[ZenderInformation.y];
                                 ExtraZender1.Children.Add(newZenderLayout);
                                 totalCount = gridCount + 1;
                                 gridCount = totalCount;
@@ -151,7 +150,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                                     NewZenderLayout newZenderLayout = new NewZenderLayout();
                                     newZenderLayout.NewZender.Text = ZenderNames.MusicZenders[ZenderInformation.y].ToString();
                                     newZenderLayout.NewOmschrijving.Text = ZenderNames.Musicdescription[ZenderInformation.y].ToString();
-                                    newZenderLayout.Name = "zender" + ZenderInformation.y;
+                                    newZenderLayout.Name = "zender" + ZenderNames.ZendersId[ZenderInformation.y];
                                     ExtraZender2.Children.Add(newZenderLayout);
                                     totalCount = gridCount + 1;
                                     gridCount = totalCount;
@@ -163,7 +162,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                                         NewZenderLayout newZenderLayout = new NewZenderLayout();
                                         newZenderLayout.NewZender.Text = ZenderNames.MusicZenders[ZenderInformation.y].ToString();
                                         newZenderLayout.NewOmschrijving.Text = ZenderNames.Musicdescription[ZenderInformation.y].ToString();
-                                        newZenderLayout.Name = "zender" + ZenderInformation.y;
+                                        newZenderLayout.Name = "zender" + ZenderNames.ZendersId[ZenderInformation.y];
                                         ExtraZender3.Children.Add(newZenderLayout);
                                         totalCount = gridCount + 1;
                                         gridCount = totalCount;
@@ -175,7 +174,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                                             NewZenderLayout newZenderLayout = new NewZenderLayout();
                                             newZenderLayout.NewZender.Text = ZenderNames.MusicZenders[ZenderInformation.y].ToString();
                                             newZenderLayout.NewOmschrijving.Text = ZenderNames.Musicdescription[ZenderInformation.y].ToString();
-                                            newZenderLayout.Name = "zender" + ZenderInformation.y;
+                                            newZenderLayout.Name = "zender" + ZenderNames.ZendersId[ZenderInformation.y];
                                             ExtraZender4.Children.Add(newZenderLayout);
                                             totalCount = gridCount + 1;
                                             gridCount = totalCount;
@@ -187,7 +186,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                                                 NewZenderLayout newZenderLayout = new NewZenderLayout();
                                                 newZenderLayout.NewZender.Text = ZenderNames.MusicZenders[ZenderInformation.y].ToString();
                                                 newZenderLayout.NewOmschrijving.Text = ZenderNames.Musicdescription[ZenderInformation.y].ToString();
-                                                newZenderLayout.Name = "zender" + ZenderInformation.y;
+                                                newZenderLayout.Name = "zender" + ZenderNames.ZendersId[ZenderInformation.y];
                                                 ExtraZender5.Children.Add(newZenderLayout);
                                                 totalCount = gridCount + 1;
                                                 gridCount = totalCount;

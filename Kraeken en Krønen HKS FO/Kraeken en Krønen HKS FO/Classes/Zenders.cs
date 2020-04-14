@@ -33,6 +33,14 @@ namespace Kraeken_en_Krønen_HKS_FO
             get { return MusicDescription; }
             set { MusicDescription = value; }
         }
+
+        private static List<int> ZenderId = new List<int>();
+
+        public static List<int> ZendersId
+        {
+            get { return ZenderId; }
+            set { ZenderId = value; }
+        }
     }
 
     class Zenders
@@ -43,7 +51,8 @@ namespace Kraeken_en_Krønen_HKS_FO
             {
                 ZenderNames.MusicZenders.Clear();
                 ZenderNames.Musicdescription.Clear();
-                var zenderquery = "select zendernaam, omschrijving from zenders";
+                ZenderNames.ZendersId.Clear();
+                var zenderquery = "SELECT zendernaam, omschrijving, zenderId FROM zenders";
 
                 var cmd = new MySqlCommand(zenderquery, ConnectionVariables.conn);
 
@@ -55,6 +64,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                     {
                         ZenderNames.MusicZenders.Add(queryresult.GetString(0).ToString());
                         ZenderNames.Musicdescription.Add(queryresult.GetString(1).ToString());
+                        ZenderNames.ZendersId.Add(queryresult.GetInt32(2));
                     }
                 }
                 else
@@ -87,6 +97,24 @@ namespace Kraeken_en_Krønen_HKS_FO
             else
             {
                 MessageBox.Show($"New zender: {ZenderInformation.ZenderTitelText} added to {ConnectionVariables.conn.Database} DB");
+            }
+        }
+
+        public void DeleteZenderFromDb(int zenderId)
+        {
+            var query = $"DELETE FROM zenders WHERE zenderId={zenderId}";
+            var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+            ConnectionVariables.conn.Open();
+            var queryResult = cmd.ExecuteNonQuery();
+            ConnectionVariables.conn.Close();
+            if (queryResult < 0)
+            {
+                MessageBox.Show("No zender found to be deleted");
+            }
+            else
+            {
+                MessageBox.Show($"Zender with id: {zenderId} has been deleted");
             }
         }
     }

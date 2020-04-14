@@ -21,14 +21,7 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
     /// </summary>
     public partial class NewZenderLayout : UserControl
     {
-
-        private static bool isClicked = false;
-
-        public static bool IsClicked
-        {
-            get { return isClicked; }
-            set { isClicked = value; }
-        }
+        Zenders zenderClass = new Zenders();
 
         public NewZenderLayout()
         {
@@ -37,7 +30,20 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
 
         private void VerwijderClick(object sender, RoutedEventArgs e)
         {
-            isClicked = true;
+            int currentZenderId;
+            string currentZender;
+            currentZender = this.Name.Remove(0, 6);
+            currentZenderId = Int32.Parse(currentZender);
+            MessageBoxResult result = MessageBox.Show("Wil je deze zender verwijderen?", $"Delete zender: {currentZenderId}", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    zenderClass.DeleteZenderFromDb(currentZenderId);
+                    zenderClass.GetAllChannels();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }
