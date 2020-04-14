@@ -21,16 +21,23 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
     /// </summary>
     public partial class NewZenderLayout : UserControl
     {
-        ZenderNames ZenderNames = new ZenderNames();
+
+        private static bool isClicked = false;
+
+        public static bool IsClicked
+        {
+            get { return isClicked; }
+            set { isClicked = value; }
+        }
 
         public NewZenderLayout()
         {
             InitializeComponent();
         }
 
-        public void PlaceZenderInfoInLayout()
+        private void VerwijderClick(object sender, RoutedEventArgs e)
         {
-           
+            isClicked = true;
         }
     }
 }

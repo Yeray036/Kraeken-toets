@@ -41,6 +41,8 @@ namespace Kraeken_en_Krønen_HKS_FO
         {
             try
             {
+                ZenderNames.MusicZenders.Clear();
+                ZenderNames.Musicdescription.Clear();
                 var zenderquery = "select zendernaam, omschrijving from zenders";
 
                 var cmd = new MySqlCommand(zenderquery, ConnectionVariables.conn);
@@ -67,6 +69,24 @@ namespace Kraeken_en_Krønen_HKS_FO
             {
                 MessageBox.Show(e.Message);
                 Console.WriteLine(e.Message);
+            }
+        }
+
+        public void UpdateDbWithNewZenders()
+        {
+            var query = $"INSERT INTO `zenders` (`zenderId`, `zendernaam`, `omschrijving`) VALUES (NULL, '{ZenderInformation.ZenderTitelText}', '{ZenderInformation.ZenderOmschrijvingText}')";
+            var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+            ConnectionVariables.conn.Open();
+            var queryResult = cmd.ExecuteNonQuery();
+            ConnectionVariables.conn.Close();
+            if (queryResult < 0)
+            {
+                MessageBox.Show($"Error while inserting into {ConnectionVariables.conn.Database} DB");
+            }
+            else
+            {
+                MessageBox.Show($"New zender: {ZenderInformation.ZenderTitelText} added to {ConnectionVariables.conn.Database} DB");
             }
         }
     }

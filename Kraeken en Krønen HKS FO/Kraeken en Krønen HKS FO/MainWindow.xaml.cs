@@ -34,6 +34,7 @@ namespace Kraeken_en_Krønen_HKS_FO
         private void OpenZendersPage(object sender, RoutedEventArgs e)
         {
             ZenderNames.MusicZenders.Clear();
+            ZenderNames.Musicdescription.Clear();
             ZendersPage zendersPage = new ZendersPage();
             try
             {

@@ -30,12 +30,12 @@
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Border HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="#FF62626A">
                     <StackPanel HorizontalAlignment="Left" Orientation="Vertical" x:Name="NewZenderGrid" Margin="5,0,5,5">
-                        <TextBlock FontSize="20px" Foreground="White" x:Name="NewZender"/>
-                        <TextBlock FontSize="20px" Foreground="White" x:Name="NewOmschrijving"/>
+                        <TextBlock FontSize="20px" Foreground="White" x:Name="NewZender" TextWrapping="Wrap"/>
+                        <TextBlock FontSize="20px" Foreground="White" x:Name="NewOmschrijving" TextWrapping="Wrap"/>
                         <Button FontSize="20px" Foreground="White" Content="programmaoverzicht"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0"/>
-                            <Button FontSize="20px" Foreground="White" Content="verwijder"/>
+                            <Button FontSize="20px" Foreground="White" Content="wijzig" Margin="0,0,5,0" x:Name="wijzigBtn"/>
+                            <Button FontSize="20px" Foreground="White" Content="verwijder" x:Name="verwijderBtn" Click="VerwijderClick"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
