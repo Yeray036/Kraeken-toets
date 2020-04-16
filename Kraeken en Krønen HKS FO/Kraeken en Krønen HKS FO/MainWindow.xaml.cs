@@ -21,7 +21,6 @@ namespace Kraeken_en_Krønen_HKS_FO
     /// </summary>
     public partial class MainWindow : Window
     {
-        Zenders zenders = new Zenders();
         MainWindow home;
 
         public MainWindow Home { get => home; set => home = value; }

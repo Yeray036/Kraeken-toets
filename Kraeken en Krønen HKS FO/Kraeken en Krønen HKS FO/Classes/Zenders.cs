@@ -84,39 +84,79 @@ namespace Kraeken_en_Krønen_HKS_FO
 
         public void UpdateDbWithNewZenders()
         {
-            var query = $"INSERT INTO `zenders` (`zenderId`, `zendernaam`, `omschrijving`) VALUES (NULL, '{ZenderInformation.ZenderTitelText}', '{ZenderInformation.ZenderOmschrijvingText}')";
-            var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+            try
+            {
+                var query = $"INSERT INTO `zenders` (`zenderId`, `zendernaam`, `omschrijving`) VALUES (NULL, '{ZenderInformation.ZenderTitelText}', '{ZenderInformation.ZenderOmschrijvingText}')";
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
 
-            ConnectionVariables.conn.Open();
-            var queryResult = cmd.ExecuteNonQuery();
-            ConnectionVariables.conn.Close();
-            if (queryResult < 0)
-            {
-                MessageBox.Show($"Fout kan geen zender toevoegen in {ConnectionVariables.conn.Database} DB");
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show($"Fout kan geen zender toevoegen in {ConnectionVariables.conn.Database} DB");
+                }
+                else
+                {
+                    MessageBox.Show($"Nieuwe zender: {ZenderInformation.ZenderTitelText} toegevoegd aan {ConnectionVariables.conn.Database} DB");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show($"Nieuwe zender: {ZenderInformation.ZenderTitelText} toegevoegd aan {ConnectionVariables.conn.Database} DB");
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
-        public void DeleteZenderFromDb(int zenderId)
+        public void DeleteZenderFromDb(int zenderId, string zendernaam)
         {
-            var query = $"DELETE FROM zenders WHERE zenderId={zenderId}";
-            var cmd = new MySqlCommand(query, ConnectionVariables.conn);
-
-            ZendersPage zendersPage = new ZendersPage();
-
-            ConnectionVariables.conn.Open();
-            var queryResult = cmd.ExecuteNonQuery();
-            ConnectionVariables.conn.Close();
-            if (queryResult < 0)
+            try
             {
-                MessageBox.Show("Geen zender gevonden om te verwijderen");
+                var query = $"DELETE FROM zenders WHERE zenderId={zenderId}";
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show("Geen zender gevonden om te verwijderen");
+                }
+                else
+                {
+                    MessageBox.Show($"{zendernaam} is verwijderd");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show($"Zender met id: {zenderId} is verwijderd");
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void ChangeZenderFromDb(string zendernaam,string zenderomschrijving ,int zenderId)
+        {
+            try
+            {
+                var query = $"UPDATE `zenders` SET `zendernaam` = '{zendernaam}', `omschrijving` = '{zenderomschrijving}' WHERE `zenders`.`zenderId` = {zenderId}";
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show("Geen zender gevonden om te wijzigen");
+                }
+                else
+                {
+                    MessageBox.Show($"{zendernaam} is gewijzigd");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
     }
