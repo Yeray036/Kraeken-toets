@@ -25,6 +25,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -75,8 +76,8 @@
             <WrapPanel x:Name="ExtraZender5" HorizontalAlignment="Center"/>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.RowSpan="6" VerticalAlignment="Top" HorizontalAlignment="Center" Panel.ZIndex="205">
-            <WrapPanel x:Name="WijzigZenderPanel"/>
+        <Grid Grid.Row="7" HorizontalAlignment="Center">
+            <WrapPanel x:Name="ProgrammaOverzichtPanel" HorizontalAlignment="Center"/>
         </Grid>
         
     </Grid>

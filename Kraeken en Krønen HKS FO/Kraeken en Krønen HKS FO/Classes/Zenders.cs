@@ -1,22 +1,26 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MaterialDesignThemes.Wpf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Kraeken_en_Krønen_HKS_FO
 {
 
-    class ConnectionVariables 
+    class ConnectionVariables
     {
         public static string cs = ConfigurationManager.ConnectionStrings["Kraeken"].ConnectionString;
         public static MySqlConnection conn = new MySqlConnection(ConnectionVariables.cs);
     }
 
-    class ZenderNames 
+    class ZenderNames
     {
         private static List<string> MusicChannels = new List<string>();
 
@@ -40,6 +44,33 @@ namespace Kraeken_en_Krønen_HKS_FO
         {
             get { return ZenderId; }
             set { ZenderId = value; }
+        }
+    }
+
+    class Programmas
+    {
+        private static DataTable dt = new DataTable();
+
+        public static DataTable programmaDataTable
+        {
+            get { return dt; }
+            set { dt = value; }
+        }
+
+        private static List<string> BeginTijd = new List<string>();
+
+        public static List<string> beginTijd
+        { 
+            get { return BeginTijd; }
+            set { BeginTijd = value; }
+        }
+
+        private static List<string> EindTijd = new List<string>();
+
+        public static List<string> eindTijd
+        {
+            get { return EindTijd; }
+            set { EindTijd = value; }
         }
     }
 
@@ -134,7 +165,7 @@ namespace Kraeken_en_Krønen_HKS_FO
             }
         }
 
-        public void ChangeZenderFromDb(string zendernaam,string zenderomschrijving ,int zenderId)
+        public void ChangeZenderFromDb(string zendernaam, string zenderomschrijving, int zenderId)
         {
             try
             {
@@ -159,5 +190,63 @@ namespace Kraeken_en_Krønen_HKS_FO
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void GetProgrammaOverzicht(int zenderId)
+        {
+            try
+            {
+                Programmas.programmaDataTable.Clear();
+                var query = $"SELECT naam, datum, begin_tijd, eind_tijd, presentator FROM programmas WHERE zenderId={zenderId}";
+
+                ConnectionVariables.conn.Open();
+
+                using (MySqlCommand cmdSel = new MySqlCommand(query, ConnectionVariables.conn))
+                {
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmdSel);
+                    da.Fill(Programmas.programmaDataTable);
+                }
+                ConnectionVariables.conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void CalculateTotalTime(int zenderId)
+        {
+            try
+            {
+                Programmas.beginTijd.Clear();
+                Programmas.eindTijd.Clear();
+                var query = $"SELECT begin_tijd, eind_tijd FROM programmas WHERE zenderId={zenderId}";
+
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+                ConnectionVariables.conn.Open();
+                var queryresult = cmd.ExecuteReader();
+                if (queryresult.HasRows)
+                {
+                    while (queryresult.Read())
+                    {
+                        Programmas.beginTijd.Add(queryresult.GetString(0));
+                        Programmas.eindTijd.Add(queryresult.GetString(1));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kan duur in minuten niet berekenen");
+                }
+                queryresult.Close();
+                ConnectionVariables.conn.Close();
+            }
+            catch (Exception ex)
+            {
+                ConnectionVariables.conn.Close();
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }

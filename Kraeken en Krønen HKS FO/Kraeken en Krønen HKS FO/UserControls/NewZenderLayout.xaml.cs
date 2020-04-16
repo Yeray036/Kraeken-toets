@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -100,6 +101,41 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void OpenProgrammaOverzichtBtn(object sender, RoutedEventArgs e)
+        {
+            int currentZenderId;
+            string currentZender;
+            currentZender = this.Name.Remove(0, 6);
+            currentZenderId = Int32.Parse(currentZender);
+
+            ProgrammaOverzichtDialog.IsOpen = true;
+            zenderClass.GetProgrammaOverzicht(currentZenderId);
+            zenderClass.CalculateTotalTime(currentZenderId);
+            if (Programmas.programmaDataTable.Columns.Contains("Duur in minuten"))
+            {
+                Console.WriteLine("Column duur in minuten bestaat al");
+            }
+            else
+            {
+                DataColumn column = new DataColumn();
+                column.ColumnName = "Duur in minuten";
+                Programmas.programmaDataTable.Columns.Add(column);
+            }
+            DataRow row;
+            for (int i = 0; i < Programmas.beginTijd.Count; i++)
+            {
+                string eind = Programmas.eindTijd[i];
+                int eindTijd = int.Parse(eind.Remove(2, 3));
+                string begin = Programmas.beginTijd[i];
+                int beginTijd = int.Parse(begin.Remove(2, 3));
+                int totaal = (eindTijd - beginTijd) * 60;
+                row = Programmas.programmaDataTable.NewRow();
+                row["Duur in minuten"] = totaal;
+                Programmas.programmaDataTable.Rows.InsertAt(row, i);
+            }
+            programmaOverzichtGrid.DataContext = Programmas.programmaDataTable;
         }
     }
 }
