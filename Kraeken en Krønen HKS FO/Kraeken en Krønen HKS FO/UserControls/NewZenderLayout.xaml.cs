@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -105,37 +106,80 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
 
         private void OpenProgrammaOverzichtBtn(object sender, RoutedEventArgs e)
         {
-            int currentZenderId;
-            string currentZender;
-            currentZender = this.Name.Remove(0, 6);
-            currentZenderId = Int32.Parse(currentZender);
+            try
+            {
+                FillGrid();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ProgrammaOverzichtDialog.IsOpen = false;
+            }
+        }
 
-            ProgrammaOverzichtDialog.IsOpen = true;
-            zenderClass.GetProgrammaOverzicht(currentZenderId);
-            zenderClass.CalculateTotalTime(currentZenderId);
-            if (Programmas.programmaDataTable.Columns.Contains("Duur in minuten"))
+        public void FillGrid()
+        {
+            try
             {
-                Console.WriteLine("Column duur in minuten bestaat al");
+                Programmas.programmaDataTable.Clear();
+                this.programmaOverzichtGrid.DataContext = null;
+                int currentZenderId;
+                string currentZender;
+                currentZender = this.Name.Remove(0, 6);
+                currentZenderId = Int32.Parse(currentZender);
+                ProgrammaOverzichtDialog.IsOpen = true;
+                zenderClass.GetProgrammaOverzicht(currentZenderId);
+                zenderClass.CalculateTotalTime(currentZenderId, this.NewZender.Text);
+                if (Programmas.programmaDataTable.Columns.Contains("Duur in minuten"))
+                {
+                    Console.WriteLine("Column duur in minuten bestaat al");
+                }
+                else
+                {
+                    DataColumn column = new DataColumn();
+                    column.ColumnName = "Duur in minuten";
+                    Programmas.programmaDataTable.Columns.Add(column);
+                }
+                TotalTimeCalculator();
+                this.programmaOverzichtGrid.DataContext = Programmas.programmaDataTable;
             }
-            else
+            catch (Exception ex)
             {
-                DataColumn column = new DataColumn();
-                column.ColumnName = "Duur in minuten";
-                Programmas.programmaDataTable.Columns.Add(column);
+                Console.WriteLine(ex.Message);
+                ProgrammaOverzichtDialog.IsOpen = false;
             }
-            DataRow row;
-            for (int i = 0; i < Programmas.beginTijd.Count; i++)
+        }
+
+        public void TotalTimeCalculator()
+        {
+            try
             {
-                string eind = Programmas.eindTijd[i];
-                int eindTijd = int.Parse(eind.Remove(2, 3));
-                string begin = Programmas.beginTijd[i];
-                int beginTijd = int.Parse(begin.Remove(2, 3));
-                int totaal = (eindTijd - beginTijd) * 60;
-                row = Programmas.programmaDataTable.NewRow();
-                row["Duur in minuten"] = totaal;
-                Programmas.programmaDataTable.Rows.InsertAt(row, i);
+                DataRow row;
+                for (int i = 0; i < Programmas.beginTijd.Count; i++)
+                {
+                    string eind = Programmas.eindTijd[i].Replace(":", ".");
+                    double eindTijd = double.Parse(eind, CultureInfo.InvariantCulture);
+                    string begin = Programmas.beginTijd[i].Replace(":", ".");
+                    double beginTijd = double.Parse(begin, CultureInfo.InvariantCulture);
+                    double totaal = (eindTijd - beginTijd) * 60;
+                    row = Programmas.programmaDataTable.Rows[i];
+                    row["Duur in minuten"] = totaal;
+                }
             }
-            programmaOverzichtGrid.DataContext = Programmas.programmaDataTable;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void CloseDialogGrid(object sender, MouseEventArgs e)
+        {
+            ProgrammaOverzichtDialog.IsOpen = false;
+        }
+
+        private void SaveNewDataGridValues(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using Kraeken_en_Krønen_HKS_FO.UserControls;
+using MaterialDesignThemes.Wpf;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -214,7 +215,7 @@ namespace Kraeken_en_Krønen_HKS_FO
             }
         }
 
-        public void CalculateTotalTime(int zenderId)
+        public void CalculateTotalTime(int zenderId, string zenderNaam)
         {
             try
             {
@@ -235,7 +236,7 @@ namespace Kraeken_en_Krønen_HKS_FO
                 }
                 else
                 {
-                    MessageBox.Show("Kan duur in minuten niet berekenen");
+                    MessageBox.Show($"Kan {zenderNaam} programma niet vinden");
                 }
                 queryresult.Close();
                 ConnectionVariables.conn.Close();

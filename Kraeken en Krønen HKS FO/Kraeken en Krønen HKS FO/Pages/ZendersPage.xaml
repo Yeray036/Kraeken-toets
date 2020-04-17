@@ -16,7 +16,7 @@
       Background="#FF3F3F46"
       FontFamily="{DynamicResource MaterialDesignFont}">
 
-    <Grid Background="#FF3F3F46">
+    <Grid Background="#FF3F3F46" >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
