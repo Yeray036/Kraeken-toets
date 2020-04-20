@@ -73,6 +73,14 @@ namespace Kraeken_en_Krønen_HKS_FO
             get { return EindTijd; }
             set { EindTijd = value; }
         }
+
+        private static int ProgrammaId = 0;
+
+        public static int prId
+        {
+            get { return ProgrammaId; }
+            set { ProgrammaId = value; }
+        }
     }
 
     class Zenders
@@ -246,6 +254,64 @@ namespace Kraeken_en_Krønen_HKS_FO
                 ConnectionVariables.conn.Close();
                 MessageBox.Show(ex.Message);
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void UpdateProgramma(int programmaId, string naam, string datum, string begintijd, string eindtijd, string presentator)
+        {
+            try
+            {
+                var query = $"UPDATE `programmas` SET `naam` = '{naam}', `datum` = '{datum}', `begin_tijd` = '{begintijd}', `eind_tijd` = '{eindtijd}', `presentator` = '{presentator}' WHERE `programmas`.`programmaId` = {programmaId}";
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show("Geen programma gevonden om te wijzigen");
+                }
+                else
+                {
+                    MessageBox.Show($"{naam} is gewijzigd");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void GetProgrammaId(int zenderId, string programmaNaam)
+        {
+            try
+            {
+                Programmas.prId = 0;
+                var query = $"SELECT programmaId FROM programmas WHERE naam='{programmaNaam}' AND zenderId='{zenderId}'";
+
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryresult = cmd.ExecuteReader();
+                if (queryresult.HasRows)
+                {
+                    while (queryresult.Read())
+                    {
+                        Programmas.prId = queryresult.GetInt32(0);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Geen programma gevonden");
+                }
+                queryresult.Close();
+                ConnectionVariables.conn.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                Console.WriteLine(e.Message);
             }
         }
 

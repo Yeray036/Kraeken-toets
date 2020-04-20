@@ -35,7 +35,17 @@
                     <materialDesign:DialogHost Name="ProgrammaOverzichtDialog" Background="#FF3F3F46" Panel.ZIndex="210">
                         <materialDesign:DialogHost.DialogContent>
                             <StackPanel>
-                                <DataGrid x:Name="programmaOverzichtGrid" AutoGenerateColumns="True" ItemsSource="{Binding}" MouseLeave="CloseDialogGrid" SelectionChanged="SaveNewDataGridValues"/>
+                                <DataGrid x:Name="programmaOverzichtGrid" AutoGenerateColumns="True" ItemsSource="{Binding}" MouseLeave="CloseDialogGrid" LostFocus="UpdateGrid">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Header="Wijzig">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Foreground="White" Content="wijzig" Margin="0,0,5,0" Click="UpdateProgrammaBtn"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
                             </StackPanel>
                         </materialDesign:DialogHost.DialogContent>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

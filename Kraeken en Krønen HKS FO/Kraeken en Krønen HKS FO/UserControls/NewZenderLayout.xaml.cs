@@ -25,6 +25,49 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
     {
         Zenders zenderClass = new Zenders();
 
+        class GridColumns
+        {
+            private static string programmaNaam = "";
+
+            public static string prNaam
+            {
+                get { return programmaNaam; }
+                set { programmaNaam = value; }
+            }
+
+            private static string programmaDatum = "";
+
+            public static string prDatum
+            {
+                get { return programmaDatum; }
+                set { programmaDatum = value; }
+            }
+
+            private static string programmaBegintijd = "";
+
+            public static string prBegintijd
+            {
+                get { return programmaBegintijd; }
+                set { programmaBegintijd = value; }
+            }
+
+            private static string programmaEindtijd = "";
+
+            public static string prEindtijd
+            {
+                get { return programmaEindtijd; }
+                set { programmaEindtijd = value; }
+            }
+
+            private static string programmaPresentator = "";
+
+            public static string prPresentator
+            {
+                get { return programmaPresentator; }
+                set { programmaPresentator = value; }
+            }
+        }
+
         public NewZenderLayout()
         {
             InitializeComponent();
@@ -177,7 +220,25 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
             ProgrammaOverzichtDialog.IsOpen = false;
         }
 
-        private void SaveNewDataGridValues(object sender, SelectionChangedEventArgs e)
+        private void UpdateProgrammaBtn(object sender, RoutedEventArgs e)
+        {
+            int currentZenderId;
+            string currentZender;
+            currentZender = this.Name.Remove(0, 6);
+            currentZenderId = Int32.Parse(currentZender);
+            DataRowView row = (DataRowView)programmaOverzichtGrid.SelectedItems[0];
+            GridColumns.prNaam = row["naam"].ToString();
+            zenderClass.GetProgrammaId(currentZenderId, GridColumns.prNaam);
+            GridColumns.prDatum = row["datum"].ToString();
+            GridColumns.prBegintijd = row["begin_tijd"].ToString();
+            GridColumns.prEindtijd = row["eind_tijd"].ToString();
+            GridColumns.prPresentator = row["presentator"].ToString();
+            int currentPrId = Programmas.prId;
+            Console.WriteLine(currentPrId + GridColumns.prNaam + GridColumns.prDatum + GridColumns.prBegintijd + GridColumns.prEindtijd + GridColumns.prPresentator);
+            //zenderClass.UpdateProgramma(currentPrId, GridColumns.prNaam, GridColumns.prDatum, GridColumns.prBegintijd, GridColumns.prEindtijd, GridColumns.prPresentator);
+        }
+
+        private void UpdateGrid(object sender, RoutedEventArgs e)
         {
             
         }
