@@ -1,4 +1,5 @@
-﻿using Kraeken_en_Krønen_HKS_FO.UserControls;
+﻿using Kraeken_en_Krønen_HKS_FO.Classes;
+using Kraeken_en_Krønen_HKS_FO.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -71,6 +72,10 @@ namespace Kraeken_en_Krønen_HKS_FO
             {
                 zendersClass.GetAllChannels();
                 PlaceZendersInGrid();
+                if (UserCredentials.Medewerker == 0 || UserCredentials.Medewerker == 2)
+                {
+                    ZenderToevoegenCard.Visibility = Visibility.Hidden;
+                }
             }
             catch (Exception e)
             {

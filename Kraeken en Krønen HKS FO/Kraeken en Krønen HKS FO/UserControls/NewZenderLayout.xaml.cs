@@ -226,6 +226,9 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
             string currentZender;
             currentZender = this.Name.Remove(0, 6);
             currentZenderId = Int32.Parse(currentZender);
+            programmaOverzichtGrid.CommitEdit();
+            programmaOverzichtGrid.CommitEdit();
+            programmaOverzichtGrid.Items.Refresh();
             DataRowView row = (DataRowView)programmaOverzichtGrid.SelectedItems[0];
             GridColumns.prNaam = row["naam"].ToString();
             zenderClass.GetProgrammaId(currentZenderId, GridColumns.prNaam);
@@ -234,13 +237,8 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
             GridColumns.prEindtijd = row["eind_tijd"].ToString();
             GridColumns.prPresentator = row["presentator"].ToString();
             int currentPrId = Programmas.prId;
-            Console.WriteLine(currentPrId + GridColumns.prNaam + GridColumns.prDatum + GridColumns.prBegintijd + GridColumns.prEindtijd + GridColumns.prPresentator);
-            //zenderClass.UpdateProgramma(currentPrId, GridColumns.prNaam, GridColumns.prDatum, GridColumns.prBegintijd, GridColumns.prEindtijd, GridColumns.prPresentator);
-        }
-
-        private void UpdateGrid(object sender, RoutedEventArgs e)
-        {
-            
+            zenderClass.UpdateProgramma(currentPrId, GridColumns.prNaam, GridColumns.prDatum, GridColumns.prBegintijd, GridColumns.prEindtijd, GridColumns.prPresentator);
+            TotalTimeCalculator();
         }
     }
 }

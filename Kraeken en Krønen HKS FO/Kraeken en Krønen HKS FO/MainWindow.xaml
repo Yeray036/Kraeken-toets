@@ -32,6 +32,15 @@
             <Label VerticalAlignment="Bottom" Foreground="White">Kraeken &amp; Krønen HKS FO</Label>
         </StackPanel>
 
+        <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Click="LoginBtn">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="UserOutline" Width="20" Height="25"/>
+                    <Label x:Name="LoginLabel" FontSize="12px" Foreground="White"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,10,0,0">
             <StackPanel Orientation="Horizontal" Margin="0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,20,0">

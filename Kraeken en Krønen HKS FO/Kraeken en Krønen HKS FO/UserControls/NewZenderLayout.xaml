@@ -35,7 +35,7 @@
                     <materialDesign:DialogHost Name="ProgrammaOverzichtDialog" Background="#FF3F3F46" Panel.ZIndex="210">
                         <materialDesign:DialogHost.DialogContent>
                             <StackPanel>
-                                <DataGrid x:Name="programmaOverzichtGrid" AutoGenerateColumns="True" ItemsSource="{Binding}" MouseLeave="CloseDialogGrid" LostFocus="UpdateGrid">
+                                <DataGrid x:Name="programmaOverzichtGrid" AutoGenerateColumns="True" ItemsSource="{Binding}" MouseLeave="CloseDialogGrid">
                                     <DataGrid.Columns>
                                         <DataGridTemplateColumn Header="Wijzig">
                                             <DataGridTemplateColumn.CellTemplate>

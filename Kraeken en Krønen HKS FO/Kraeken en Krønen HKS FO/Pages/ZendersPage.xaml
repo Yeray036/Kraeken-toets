@@ -28,7 +28,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" x:Name="ZenderToevoegenCard">
             <StackPanel Margin="10,10,10,0">
                 <materialDesign:Card Background="#FF3F3F46">
                     <StackPanel Orientation="Vertical">
