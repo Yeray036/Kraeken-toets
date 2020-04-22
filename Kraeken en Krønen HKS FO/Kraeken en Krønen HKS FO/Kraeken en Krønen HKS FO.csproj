@@ -87,9 +87,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Login.cs" />
+    <Compile Include="Classes\SearchProgramma.cs" />
     <Compile Include="Classes\Zenders.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProgrammasPage.xaml.cs">
+      <DependentUpon>ProgrammasPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ZendersPage.xaml.cs">
       <DependentUpon>ZendersPage.xaml</DependentUpon>
@@ -113,6 +117,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProgrammasPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

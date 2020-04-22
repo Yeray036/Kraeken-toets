@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Kraeken_en_Krønen_HKS_FO.Pages;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
     /// </summary>
     public partial class ProgrammaOverzichtLayout : UserControl
     {
+        ProgrammasPage ProgrammasPage;
+
         public ProgrammaOverzichtLayout()
         {
             InitializeComponent();

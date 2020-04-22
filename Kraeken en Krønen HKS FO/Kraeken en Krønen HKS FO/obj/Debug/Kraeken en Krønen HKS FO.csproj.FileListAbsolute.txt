@@ -36,3 +36,5 @@ D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kr
 D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\UserControls\ProgrammaOverzichtLayout.baml
 D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\LoginPage.g.cs
 D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\LoginPage.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ProgrammasPage.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ProgrammasPage.baml

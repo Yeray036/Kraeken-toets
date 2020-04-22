@@ -100,5 +100,11 @@ namespace Kraeken_en_Krønen_HKS_FO
             }
             pageFrame.Navigate(loginPage);
         }
+
+        private void OpenProgrammaPage(object sender, RoutedEventArgs e)
+        {
+            ProgrammasPage programmasPage = new ProgrammasPage();
+            pageFrame.Navigate(programmasPage);
+        }
     }
 }

@@ -11,7 +11,7 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             Background="Red"
+             Background="#FF3F3F46"
              FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,10 +26,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
-        <Grid Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3">
-            <TextBlock Text="Test" FontSize="25px" FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
+        <Border Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2px" BorderBrush="#FF62626A" Margin="10">
+            <StackPanel>
+                <Label Content="Programma" Foreground="White" FontSize="18px" FontWeight="Bold"/>
+                <Label Content="Naam programma:" Foreground="White" FontSize="18px" Margin="0,5,0,0" x:Name="NaamProgramma"/>
+                <Label Content="Datum:" Foreground="White" FontSize="18px" x:Name="DatumProgramma"/>
+                <Label Content="Begintijd:" Foreground="White" FontSize="18px" Margin="0,10,0,0" x:Name="BegintijdProgramma"/>
+                <Label Content="Eindtijd:" Foreground="White" FontSize="18px" x:Name="EindTijdProgramma"/>
+                <Label Content="Presentator:" Foreground="White" FontSize="18px" Margin="0,10,0,0" x:Name="PresentatorProgramma"/>
+                <Label Content="Zender:" Foreground="White" FontSize="18px" Margin="0,10,0,0" x:Name="ZenderNaamProgramma"/>
+                <Label Content="Playlist" Foreground="White" FontSize="18px" FontWeight="Bold" Margin="0,10,0,0"/>
+                <DataGrid x:Name="PlaylistGrid" AutoGenerateColumns="true" ItemsSource="{Binding}"/>
+            </StackPanel>
+        </Border>
+        
 
 
     </Grid>

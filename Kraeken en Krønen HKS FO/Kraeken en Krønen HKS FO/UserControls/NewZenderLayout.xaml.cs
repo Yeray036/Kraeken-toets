@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kraeken_en_Krønen_HKS_FO.Classes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -71,6 +72,12 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
         public NewZenderLayout()
         {
             InitializeComponent();
+            if (UserCredentials.Medewerker == 2 || UserCredentials.Medewerker == 0)
+            {
+                wijzigBtn.Visibility = Visibility.Hidden;
+                verwijderBtn.Visibility = Visibility.Hidden;
+                return;
+            }
         }
 
         private void VerwijderClick(object sender, RoutedEventArgs e)
@@ -222,6 +229,11 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
 
         private void UpdateProgrammaBtn(object sender, RoutedEventArgs e)
         {
+            if (UserCredentials.Medewerker == 0 || UserCredentials.Medewerker == 2)
+            {
+                MessageBox.Show("Je hebt geen toegang om programmas te wijzigen");
+                return;
+            }
             int currentZenderId;
             string currentZender;
             currentZender = this.Name.Remove(0, 6);
@@ -239,6 +251,33 @@ namespace Kraeken_en_Krønen_HKS_FO.UserControls
             int currentPrId = Programmas.prId;
             zenderClass.UpdateProgramma(currentPrId, GridColumns.prNaam, GridColumns.prDatum, GridColumns.prBegintijd, GridColumns.prEindtijd, GridColumns.prPresentator);
             TotalTimeCalculator();
+        }
+
+        private void VerwijderProgrammaBtn(object sender, RoutedEventArgs e)
+        {
+            if (UserCredentials.Medewerker == 0 || UserCredentials.Medewerker == 2)
+            {
+                MessageBox.Show("Je hebt geen toegang om programmas te verwijderen");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Wil je dit programma verwijderen?", $"Verwijder Programma", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    int currentZenderId;
+                    string currentZender;
+                    currentZender = this.Name.Remove(0, 6);
+                    currentZenderId = Int32.Parse(currentZender);
+                    DataRowView row = (DataRowView)programmaOverzichtGrid.SelectedItems[0];
+                    GridColumns.prNaam = row["naam"].ToString();
+                    zenderClass.GetProgrammaId(currentZenderId, GridColumns.prNaam);
+                    int currentPrId = Programmas.prId;
+                    zenderClass.RemoveProgrammaFromDB(currentPrId, GridColumns.prNaam);
+                    programmaOverzichtGrid.Items.Refresh();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }

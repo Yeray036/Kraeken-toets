@@ -283,6 +283,32 @@ namespace Kraeken_en_Krønen_HKS_FO
             }
         }
 
+        public void RemoveProgrammaFromDB(int programmaId, string programmaNaam)
+        {
+            try
+            {
+                var query = $"DELETE FROM programmas WHERE programmaId={programmaId}";
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show("Geen programma gevonden om te verwijderen");
+                }
+                else
+                {
+                    MessageBox.Show($"{programmaNaam} is verwijderd");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public void GetProgrammaId(int zenderId, string programmaNaam)
         {
             try
