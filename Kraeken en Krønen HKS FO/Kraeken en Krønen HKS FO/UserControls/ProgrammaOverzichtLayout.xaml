@@ -37,6 +37,7 @@
                 <Label Content="Zender:" Foreground="White" FontSize="18px" Margin="0,10,0,0" x:Name="ZenderNaamProgramma"/>
                 <Label Content="Playlist" Foreground="White" FontSize="18px" FontWeight="Bold" Margin="0,10,0,0"/>
                 <DataGrid x:Name="PlaylistGrid" AutoGenerateColumns="true" ItemsSource="{Binding}"/>
+                <Label Content="Totaal" Foreground="White" FontSize="18px" FontWeight="Bold" Margin="0,10,0,0" x:Name="TotaleTijd"/>
             </StackPanel>
         </Border>
         

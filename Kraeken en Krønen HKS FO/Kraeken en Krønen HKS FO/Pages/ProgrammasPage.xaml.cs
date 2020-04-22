@@ -3,6 +3,7 @@ using Kraeken_en_Krønen_HKS_FO.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,18 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
             programmaOverzichtLayout.PresentatorProgramma.Content = "Presentator: " + DetailedProgramma.Presentator;
             SearchProgramma.GetSongsFromProgramma(DetailedProgramma.prId, prnaam);
             programmaOverzichtLayout.PlaylistGrid.DataContext = Songs.ProgrammaSongTable.DefaultView;
+
+            List<double> total = new List<double>();
+
+            foreach (DataRowView item in programmaOverzichtLayout.PlaylistGrid.ItemsSource)
+            {
+                string tijd = item[2].ToString().Replace(":", ".");
+                double Tijd = double.Parse(tijd, CultureInfo.InvariantCulture);
+                total.Add(Tijd);
+            }
+            double ListSom = total.Sum();
+            string TotalTime = ListSom.ToString().Replace(",", ":");
+            programmaOverzichtLayout.TotaleTijd.Content = "Totaal: " + TotalTime;
             DetailedProgrammaPanel.Children.Add(programmaOverzichtLayout);
         }
     }
