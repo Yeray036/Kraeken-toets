@@ -35,53 +35,67 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
 
         private void SearchBtn(object sender, RoutedEventArgs e)
         {
-            if (SearchProgrammaTxt.Text != String.Empty)
+            try
             {
-                DetailedProgrammaPanel.Children.Remove(programmaOverzichtLayout);
-                GevondenProgrammaLabel.Content = $"Gevonden programma's met: {SearchProgrammaTxt.Text}";
-                DetailedProgramma.programmaDataTable.Clear();
-                SearchProgramma.SearchProgrammas();
-                DataView dv = DetailedProgramma.programmaDataTable.DefaultView;
-                dv.RowFilter = string.Format("naam like '%" + SearchProgrammaTxt.Text + "%'");
-                DetailedProgrammaGrid.DataContext = dv;
+                if (SearchProgrammaTxt.Text != String.Empty)
+                {
+                    DetailedProgrammaPanel.Children.Remove(programmaOverzichtLayout);
+                    GevondenProgrammaLabel.Content = $"Gevonden programma's met: {SearchProgrammaTxt.Text}";
+                    DetailedProgramma.programmaDataTable.Clear();
+                    SearchProgramma.SearchProgrammas();
+                    DataView dv = DetailedProgramma.programmaDataTable.DefaultView;
+                    dv.RowFilter = string.Format("naam like '%" + SearchProgrammaTxt.Text + "%'");
+                    DetailedProgrammaGrid.DataContext = dv;
+                }
+                else
+                {
+                    DetailedProgrammaPanel.Children.Remove(programmaOverzichtLayout);
+                    DetailedProgramma.programmaDataTable.Clear();
+                    GevondenProgrammaLabel.Content = $"Gevonden programma's: 0";
+                    MessageBox.Show("Geen filter toegevoegd");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                DetailedProgrammaPanel.Children.Remove(programmaOverzichtLayout);
-                DetailedProgramma.programmaDataTable.Clear();
-                GevondenProgrammaLabel.Content = $"Gevonden programma's: 0";
-                MessageBox.Show("Geen filter toegevoegd");
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
         private void OpenOverzichtBtn(object sender, RoutedEventArgs e)
         {
-            Songs.ProgrammaSongTable.Clear();
-            DetailedProgrammaPanel.Children.Remove(programmaOverzichtLayout);
-            DataRowView row = (DataRowView)DetailedProgrammaGrid.SelectedItems[0];
-            programmaOverzichtLayout.NaamProgramma.Content = $"Naam programma: '{row["naam"]}'";
-            string prnaam = row["naam"].ToString();
-            programmaOverzichtLayout.ZenderNaamProgramma.Content = $"Zender: {row["zendernaam"]}";
-            SearchProgramma.GetInfoOfProgramma(prnaam);
-            programmaOverzichtLayout.DatumProgramma.Content = "Datum: " + DetailedProgramma.Datum;
-            programmaOverzichtLayout.BegintijdProgramma.Content = "Begintijd: " + DetailedProgramma.BeginTijd + " uur";
-            programmaOverzichtLayout.EindTijdProgramma.Content = "Eindtijd: " + DetailedProgramma.EindTijd + " uur";
-            programmaOverzichtLayout.PresentatorProgramma.Content = "Presentator: " + DetailedProgramma.Presentator;
-            SearchProgramma.GetSongsFromProgramma(DetailedProgramma.prId, prnaam);
-            programmaOverzichtLayout.PlaylistGrid.DataContext = Songs.ProgrammaSongTable.DefaultView;
-
-            List<double> total = new List<double>();
-
-            foreach (DataRowView item in programmaOverzichtLayout.PlaylistGrid.ItemsSource)
+            try
             {
-                string tijd = item[2].ToString().Replace(":", ".");
-                double Tijd = double.Parse(tijd, CultureInfo.InvariantCulture);
-                total.Add(Tijd);
+                Songs.ProgrammaSongTable.Clear();
+                DetailedProgrammaPanel.Children.Remove(programmaOverzichtLayout);
+                DataRowView row = (DataRowView)DetailedProgrammaGrid.SelectedItems[0];
+                programmaOverzichtLayout.NaamProgramma.Content = $"Naam programma: '{row["naam"]}'";
+                string prnaam = row["naam"].ToString();
+                programmaOverzichtLayout.ZenderNaamProgramma.Content = $"Zender: {row["zendernaam"]}";
+                SearchProgramma.GetInfoOfProgramma(prnaam);
+                programmaOverzichtLayout.DatumProgramma.Content = "Datum: " + DetailedProgramma.Datum;
+                programmaOverzichtLayout.BegintijdProgramma.Content = "Begintijd: " + DetailedProgramma.BeginTijd + " uur";
+                programmaOverzichtLayout.EindTijdProgramma.Content = "Eindtijd: " + DetailedProgramma.EindTijd + " uur";
+                programmaOverzichtLayout.PresentatorProgramma.Content = "Presentator: " + DetailedProgramma.Presentator;
+                SearchProgramma.GetSongsFromProgramma(DetailedProgramma.prId, prnaam);
+                programmaOverzichtLayout.PlaylistGrid.DataContext = Songs.ProgrammaSongTable.DefaultView;
+
+                List<double> total = new List<double>();
+
+                foreach (DataRowView item in programmaOverzichtLayout.PlaylistGrid.ItemsSource)
+                {
+                    string tijd = item[2].ToString().Replace(":", ".");
+                    double Tijd = double.Parse(tijd, CultureInfo.InvariantCulture);
+                    total.Add(Tijd);
+                }
+                double ListSom = total.Sum();
+                string TotalTime = ListSom.ToString().Replace(",", ":");
+                programmaOverzichtLayout.TotaleTijd.Content = "Totaal: " + TotalTime;
+                DetailedProgrammaPanel.Children.Add(programmaOverzichtLayout);
             }
-            double ListSom = total.Sum();
-            string TotalTime = ListSom.ToString().Replace(",", ":");
-            programmaOverzichtLayout.TotaleTijd.Content = "Totaal: " + TotalTime;
-            DetailedProgrammaPanel.Children.Add(programmaOverzichtLayout);
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
         }
     }
 }

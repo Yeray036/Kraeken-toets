@@ -26,7 +26,20 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
         public LoginPage()
         {
             InitializeComponent();
-            LoginBtnStack.Children.Remove(UitlogBtn);
+            try
+            {
+                LoginBtnStack.Children.Remove(UitlogBtn);
+                LoginFields.Children.Remove(Tussenvoegsel);
+                LoginFields.Children.Remove(Achternaam);
+                LoginBtnStack.Children.Remove(Aanmaken);
+                LoginBtnStack.Children.Remove(Terug);
+                LoginBtnStack.Children.Remove(NieuweMedewerker);
+                LoginBtnStack.Children.Remove(AddNewMedewerker);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}" );
+            }
         }
 
         private void InloggenBtn(object sender, RoutedEventArgs e)
@@ -41,8 +54,14 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                         LoginFields.Children.Remove(UserName);
                         LoginFields.Children.Remove(Password);
                         LoginBtnStack.Children.Remove(ActualBtn);
+                        LoginBtnStack.Children.Remove(Register);
+                        LoginBtnStack.Children.Remove(NieuweMedewerker);
                         LoginLabel.Text = $"Welkom {UserCredentials.UserName} {UserCredentials.TussenVoegsel} {UserCredentials.Achternaam}";
                         LoginBtnStack.Children.Add(UitlogBtn);
+                        if (UserCredentials.Medewerker == 1)
+                        {
+                            LoginBtnStack.Children.Add(NieuweMedewerker);
+                        }
                     }
                     else
                     {
@@ -63,17 +82,191 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
 
         private void UitloggenBtn(object sender, RoutedEventArgs e)
         {
-            LoginFields.Children.Add(UserName);
-            LoginFields.Children.Add(Password);
-            LoginBtnStack.Children.Add(ActualBtn);
-            LoginBtnStack.Children.Remove(UitlogBtn);
-            Password.Password = "";
-            LoginLabel.Text = "Login";
-            UserCredentials.UserName = String.Empty;
-            UserCredentials.TussenVoegsel = String.Empty;
-            UserCredentials.Achternaam = String.Empty;
-            UserCredentials.Password = String.Empty;
-            UserCredentials.Medewerker = 2;
+            try
+            {
+                LoginFields.Children.Add(UserName);
+                LoginFields.Children.Add(Password);
+                LoginBtnStack.Children.Add(ActualBtn);
+                LoginBtnStack.Children.Add(Register);
+                LoginBtnStack.Children.Remove(UitlogBtn);
+                LoginBtnStack.Children.Remove(NieuweMedewerker);
+                UserName.Text = "";
+                Tussenvoegsel.Text = "";
+                Achternaam.Text = "";
+                Password.Password = "";
+                LoginLabel.Text = "Login";
+                UserCredentials.UserName = String.Empty;
+                UserCredentials.TussenVoegsel = String.Empty;
+                UserCredentials.Achternaam = String.Empty;
+                UserCredentials.Password = String.Empty;
+                UserCredentials.Medewerker = 2;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void RegisterBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LoginLabel.Text = "Registreren";
+                UserName.Text = "";
+                Tussenvoegsel.Text = "";
+                Achternaam.Text = "";
+                Password.Password = "";
+                LoginFields.Children.Remove(UserName);
+                LoginFields.Children.Remove(Password);
+                LoginFields.Children.Add(UserName);
+                LoginFields.Children.Add(Tussenvoegsel);
+                LoginFields.Children.Add(Achternaam);
+                LoginFields.Children.Add(Password);
+                LoginBtnStack.Children.Add(Aanmaken);
+                LoginBtnStack.Children.Add(Terug);
+                LoginBtnStack.Children.Remove(ActualBtn);
+                LoginBtnStack.Children.Remove(Register);
+                LoginBtnStack.Children.Remove(NieuweMedewerker);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void GebruikerAanmakenBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (UserName.Text != string.Empty && Achternaam.Text != string.Empty && Password.Password != string.Empty)
+                {
+                    Login.AddNewGebruiker(UserName.Text, Tussenvoegsel.Text, Achternaam.Text, Password.Password);
+                    if (UserCredentials.Medewerker == 0)
+                    {
+                        LoginLabel.Text = "Login";
+                        LoginBtnStack.Children.Remove(Aanmaken);
+                        LoginBtnStack.Children.Remove(Terug);
+                        LoginFields.Children.Remove(Tussenvoegsel);
+                        LoginFields.Children.Remove(Achternaam);
+                        LoginBtnStack.Children.Add(ActualBtn);
+                        LoginBtnStack.Children.Add(Register);
+                        LoginBtnStack.Children.Remove(NieuweMedewerker);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kan je niet toevoegen omdat verplichte velden leeg zijn");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void TerugBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (UserCredentials.Medewerker != 1)
+                {
+                    LoginLabel.Text = "Login";
+                    UserName.Text = "";
+                    Tussenvoegsel.Text = "";
+                    Achternaam.Text = "";
+                    Password.Password = "";
+                    LoginFields.Children.Remove(UserName);
+                    LoginFields.Children.Remove(Password);
+                    LoginFields.Children.Add(UserName);
+                    LoginFields.Children.Remove(Tussenvoegsel);
+                    LoginFields.Children.Remove(Achternaam);
+                    LoginFields.Children.Add(Password);
+                    LoginBtnStack.Children.Remove(Aanmaken);
+                    LoginBtnStack.Children.Remove(Terug);
+                    LoginBtnStack.Children.Add(ActualBtn);
+                    LoginBtnStack.Children.Add(Register);
+                }
+                else
+                {
+                    LoginLabel.Text = $"Welkom {UserCredentials.UserName} {UserCredentials.TussenVoegsel} {UserCredentials.Achternaam}";
+                    UserName.Text = "";
+                    Tussenvoegsel.Text = "";
+                    Achternaam.Text = "";
+                    Password.Password = "";
+                    LoginBtnStack.Children.Remove(Terug);
+                    LoginBtnStack.Children.Remove(AddNewMedewerker);
+                    LoginFields.Children.Remove(UserName);
+                    LoginFields.Children.Remove(Tussenvoegsel);
+                    LoginFields.Children.Remove(Achternaam);
+                    LoginFields.Children.Remove(Password);
+                    LoginBtnStack.Children.Add(UitlogBtn);
+                    LoginBtnStack.Children.Add(NieuweMedewerker);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void NieuweMedewerkerBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LoginLabel.Text = "Registreer nieuwe medewerker";
+                UserName.Text = "";
+                Tussenvoegsel.Text = "";
+                Achternaam.Text = "";
+                Password.Password = "";
+                LoginBtnStack.Children.Remove(UitlogBtn);
+                LoginBtnStack.Children.Remove(NieuweMedewerker);
+                LoginFields.Children.Add(UserName);
+                LoginFields.Children.Add(Tussenvoegsel);
+                LoginFields.Children.Add(Achternaam);
+                LoginFields.Children.Add(Password);
+                LoginBtnStack.Children.Add(AddNewMedewerker);
+                LoginBtnStack.Children.Add(Terug);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void AddNewMedewerkerBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (UserName.Text != string.Empty && Achternaam.Text != string.Empty && Password.Password != string.Empty)
+                {
+                    Login.AddNewMedewerkerToDb(UserName.Text, Tussenvoegsel.Text, Achternaam.Text, Password.Password);
+                    if (UserCredentials.Medewerker == 1)
+                    {
+                        LoginLabel.Text = $"Welkom {UserCredentials.UserName} {UserCredentials.TussenVoegsel} {UserCredentials.Achternaam}";
+                        LoginBtnStack.Children.Remove(AddNewMedewerker);
+                        LoginBtnStack.Children.Remove(Terug);
+                        LoginFields.Children.Remove(UserName);
+                        LoginFields.Children.Remove(Tussenvoegsel);
+                        LoginFields.Children.Remove(Achternaam);
+                        LoginFields.Children.Remove(Password);
+                        LoginBtnStack.Children.Add(UitlogBtn);
+                        LoginBtnStack.Children.Add(NieuweMedewerker);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Kan medewerker niet toevoegen omdat verplichte velden leeg zijn");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
         }
     }
 }

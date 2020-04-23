@@ -32,85 +32,143 @@ namespace Kraeken_en_Krønen_HKS_FO
         public MainWindow()
         {
             InitializeComponent();
-            if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+            try
             {
-                LoginLabel.Content = "Login";
+                if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+                {
+                    LoginLabel.Content = "Login";
+                }
+                else
+                {
+                    LoginLabel.Content = UserCredentials.UserName;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                LoginLabel.Content = UserCredentials.UserName;
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 
         private void OpenZendersPage(object sender, RoutedEventArgs e)
         {
-            ZenderNames.MusicZenders.Clear();
-            ZenderNames.Musicdescription.Clear();
-            ZendersPage zendersPage = new ZendersPage();
-            if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
-            {
-                LoginLabel.Content = "Login";
-            }
-            else
-            {
-                LoginLabel.Content = UserCredentials.UserName;
-            }
             try
             {
-                if (ZenderNames.MusicZenders.Count != ZenderNames.MusicZenders.Count)
+                ZenderNames.MusicZenders.Clear();
+                ZenderNames.Musicdescription.Clear();
+                ZendersPage zendersPage = new ZendersPage();
+                if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
                 {
-                    zendersPage.ExtraZender.Children.Clear();
-                    zendersPage.ExtraZender1.Children.Clear();
-                    zendersPage.ExtraZender2.Children.Clear();
-                    zendersPage.ExtraZender3.Children.Clear();
-                    zendersPage.ExtraZender4.Children.Clear();
-                    zendersPage.ExtraZender5.Children.Clear();
-                    zendersPage.PlaceZendersInGrid();
+                    LoginLabel.Content = "Login";
                 }
+                else
+                {
+                    LoginLabel.Content = UserCredentials.UserName;
+                }
+                try
+                {
+                    if (ZenderNames.MusicZenders.Count != ZenderNames.MusicZenders.Count)
+                    {
+                        zendersPage.ExtraZender.Children.Clear();
+                        zendersPage.ExtraZender1.Children.Clear();
+                        zendersPage.ExtraZender2.Children.Clear();
+                        zendersPage.ExtraZender3.Children.Clear();
+                        zendersPage.ExtraZender4.Children.Clear();
+                        zendersPage.ExtraZender5.Children.Clear();
+                        zendersPage.PlaceZendersInGrid();
+                    }
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+                pageFrame.Navigate(zendersPage);
             }
-            catch (Exception error)
+            catch (Exception ex)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("ERROR: " + ex.Message);
             }
-            pageFrame.Navigate(zendersPage);
         }
 
         private void OpenHomePage(object sender, RoutedEventArgs e)
         {
-            if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+            try
             {
-                LoginLabel.Content = "Login";
+                if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+                {
+                    LoginLabel.Content = "Login";
+                }
+                else
+                {
+                    LoginLabel.Content = UserCredentials.UserName;
+                }
+                pageFrame.Navigate(Home);
             }
-            else
+            catch (Exception ex)
             {
-                LoginLabel.Content = UserCredentials.UserName;
+                MessageBox.Show("ERROR: " + ex.Message);
             }
-            pageFrame.Navigate(Home);
         }
 
         private void LoginBtn(object sender, RoutedEventArgs e)
         {
-            if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+            try
             {
-                LoginLabel.Content = "Login";
+                if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+                {
+                    LoginLabel.Content = "Login";
+                }
+                else
+                {
+                    LoginLabel.Content = UserCredentials.UserName;
+                }
+                pageFrame.Navigate(loginPage);
             }
-            else
+            catch (Exception ex)
             {
-                LoginLabel.Content = UserCredentials.UserName;
+                MessageBox.Show("ERROR: " + ex.Message);
             }
-            pageFrame.Navigate(loginPage);
         }
 
         private void OpenProgrammaPage(object sender, RoutedEventArgs e)
         {
-            ProgrammasPage programmasPage = new ProgrammasPage();
-            pageFrame.Navigate(programmasPage);
+            try
+            {
+                if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+                {
+                    LoginLabel.Content = "Login";
+                }
+                else
+                {
+                    LoginLabel.Content = UserCredentials.UserName;
+                }
+                ProgrammasPage programmasPage = new ProgrammasPage();
+                pageFrame.Navigate(programmasPage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
         }
 
         private void OpenNummersPage(object sender, RoutedEventArgs e)
         {
-            NummersPage nummersPage = new NummersPage();
-            pageFrame.Navigate(nummersPage);
+            try
+            {
+                if (UserCredentials.UserName == String.Empty && UserCredentials.Password == String.Empty)
+                {
+                    LoginLabel.Content = "Login";
+                }
+                else
+                {
+                    LoginLabel.Content = UserCredentials.UserName;
+                }
+                NummersPage nummersPage = new NummersPage();
+                pageFrame.Navigate(nummersPage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
         }
     }
 }

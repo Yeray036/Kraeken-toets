@@ -31,22 +31,76 @@ namespace Kraeken_en_Krønen_HKS_FO.Classes
                 else
                 {
                     MessageBox.Show("Verkeerde inlog gegevens");
-                    Console.WriteLine(UserCredentials.UserName + UserCredentials.TussenVoegsel + UserCredentials.Achternaam + pwd + UserCredentials.Medewerker);
                 }
                 queryresult.Close();
                 ConnectionVariables.conn.Close();
-                Console.WriteLine(UserCredentials.UserName + UserCredentials.TussenVoegsel + UserCredentials.Achternaam + pwd + UserCredentials.Medewerker);
             }
             catch (Exception e)
             {
                 ConnectionVariables.conn.Close();
                 MessageBox.Show(e.Message);
                 Console.WriteLine(e.Message);
-                Console.WriteLine(UserCredentials.UserName  +  UserCredentials.TussenVoegsel  +  UserCredentials.Achternaam  +  pwd  +  UserCredentials.Medewerker);
+            }
+        }
+
+        public void AddNewGebruiker(string Naam, string Tussenvoegsel, string Achternaam, string Wachtwoord)
+        {
+            try
+            {
+                var query = $"INSERT INTO `gebruikers` (`naam`, `tussenvoegsel`, `achternaam`, `wachtwoord`, `medewerker`) VALUES ('{Naam}', '{Tussenvoegsel}', '{Achternaam}', '{Wachtwoord}', '0')";
+
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show($"Fout kan {Naam} niet toevoegen in {ConnectionVariables.conn.Database} DB");
+                }
+                else
+                {
+                    MessageBox.Show($"Nieuwe gebruiker: {Naam} is toegevoegd aan {ConnectionVariables.conn.Database} DB");
+                    UserCredentials.Medewerker = 0;
+                }
+            }
+            catch (Exception e)
+            {
+                ConnectionVariables.conn.Close();
+                MessageBox.Show(e.Message);
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void AddNewMedewerkerToDb(string Naam, string Tussenvoegsel, string Achternaam, string Wachtwoord)
+        {
+            try
+            {
+                var query = $"INSERT INTO `gebruikers` (`naam`, `tussenvoegsel`, `achternaam`, `wachtwoord`, `medewerker`) VALUES ('{Naam}', '{Tussenvoegsel}', '{Achternaam}', '{Wachtwoord}', '1')";
+
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show($"Fout kan {Naam} niet toevoegen in {ConnectionVariables.conn.Database} DB");
+                }
+                else
+                {
+                    MessageBox.Show($"Nieuwe medewerker: {Naam} is toegevoegd aan {ConnectionVariables.conn.Database} DB");
+                }
+            }
+            catch (Exception e)
+            {
+                ConnectionVariables.conn.Close();
+                MessageBox.Show(e.Message);
+                Console.WriteLine(e.Message);
             }
         }
     }
-
+    
     class UserCredentials
     {
         private static string username = "";

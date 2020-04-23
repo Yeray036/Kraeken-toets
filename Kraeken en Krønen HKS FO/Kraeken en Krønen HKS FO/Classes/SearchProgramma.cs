@@ -295,6 +295,3 @@ namespace Kraeken_en_Krønen_HKS_FO.Classes
 
     }
 }
-
-
-//
