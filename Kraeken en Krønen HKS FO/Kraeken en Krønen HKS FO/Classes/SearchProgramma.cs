@@ -59,6 +59,14 @@ namespace Kraeken_en_Krønen_HKS_FO.Classes
             get { return programmaId; }
             set { programmaId = value; }
         }
+
+        private static DataTable playlist = new DataTable();
+
+        public static DataTable PlaylistInfo
+        {
+            get { return playlist; }
+            set { playlist = value; }
+        }
     }
 
     class Songs
@@ -93,6 +101,14 @@ namespace Kraeken_en_Krønen_HKS_FO.Classes
         {
             get { return duur; }
             set { duur = value; }
+        }
+
+        private static DataTable allSongTable = new DataTable();
+
+        public static DataTable AllSongsTable
+        {
+            get { return allSongTable; }
+            set { allSongTable = value; }
         }
     }
 
@@ -180,6 +196,103 @@ namespace Kraeken_en_Krønen_HKS_FO.Classes
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void GetAllSongs()
+        {
+            try
+            {
+                var query = $"SELECT artiest, titel, duur_in_minuten FROM songs";
+
+                ConnectionVariables.conn.Open();
+                using (MySqlCommand cmdSel = new MySqlCommand(query, ConnectionVariables.conn))
+                {
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmdSel);
+                    da.Fill(Songs.AllSongsTable);
+                }
+                ConnectionVariables.conn.Close();
+            }
+            catch (Exception ex)
+            {
+                ConnectionVariables.conn.Close();
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void RemoveSongFromDb(string artiest, string titel)
+        {
+            try
+            {
+                var query = $"DELETE FROM songs WHERE artiest='{artiest}' AND titel='{titel}'";
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show("Geen nummer gevonden om te verwijderen");
+                }
+                else
+                {
+                    MessageBox.Show($"{titel} van {artiest} is verwijderd");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void GetPlaylist()
+        {
+            try
+            {
+                var query = $"select playlistId,naam FROM playlist,programmas WHERE playlist.playlistId=playlist.playlistId AND playlist.programmaId=programmas.programmaId";
+
+                ConnectionVariables.conn.Open();
+                using (MySqlCommand cmdSel = new MySqlCommand(query, ConnectionVariables.conn))
+                {
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmdSel);
+                    da.Fill(DetailedProgramma.PlaylistInfo);
+                }
+                ConnectionVariables.conn.Close();
+            }
+            catch (Exception ex)
+            {
+                ConnectionVariables.conn.Close();
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void AddNewSongToDb(string artiest, string titel, string duur_in_minuten, int playlistId)
+        {
+            try
+            {
+                var query = $"INSERT INTO `songs` (`artiest`, `titel`, `duur_in_minuten`, `playlistId`) VALUES ('{artiest}', '{titel}', '{duur_in_minuten}', '{playlistId}')";
+                var cmd = new MySqlCommand(query, ConnectionVariables.conn);
+
+                ConnectionVariables.conn.Open();
+                var queryResult = cmd.ExecuteNonQuery();
+                ConnectionVariables.conn.Close();
+                if (queryResult < 0)
+                {
+                    MessageBox.Show($"Fout kan {titel} van {artiest} niet toevoegen in {ConnectionVariables.conn.Database} DB");
+                }
+                else
+                {
+                    MessageBox.Show($"Nieuw nummer: {titel} van {artiest} toegevoegd aan {ConnectionVariables.conn.Database} DB");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
 

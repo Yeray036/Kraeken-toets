@@ -42,7 +42,7 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="10,0">
             <Label Content="Gevonden programmas" Foreground="White" FontSize="18px" x:Name="GevondenProgrammaLabel"/>
             <ScrollViewer Foreground="#FF62626A" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <DataGrid x:Name="DetailedProgrammaGrid" AutoGenerateColumns="true" ItemsSource="{Binding}">
+                <DataGrid x:Name="DetailedProgrammaGrid" AutoGenerateColumns="true" ItemsSource="{Binding}" CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="Detailed Overzicht">
                             <DataGridTemplateColumn.CellTemplate>

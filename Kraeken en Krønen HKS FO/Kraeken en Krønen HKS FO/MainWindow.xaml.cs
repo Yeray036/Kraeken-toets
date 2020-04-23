@@ -106,5 +106,11 @@ namespace Kraeken_en_Krønen_HKS_FO
             ProgrammasPage programmasPage = new ProgrammasPage();
             pageFrame.Navigate(programmasPage);
         }
+
+        private void OpenNummersPage(object sender, RoutedEventArgs e)
+        {
+            NummersPage nummersPage = new NummersPage();
+            pageFrame.Navigate(nummersPage);
+        }
     }
 }

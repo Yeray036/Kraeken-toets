@@ -78,6 +78,15 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,20,0">
+                    <Button Click="OpenNummersPage">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Music" Width="20px" Height="25px"/>
+                            <Label VerticalAlignment="Center" FontSize="15px" Foreground="#DDFFFFFF">Nummers</Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
 
