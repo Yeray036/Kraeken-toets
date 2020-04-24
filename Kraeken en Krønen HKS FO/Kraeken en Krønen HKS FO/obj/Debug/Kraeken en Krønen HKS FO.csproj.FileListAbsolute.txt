@@ -1,0 +1,42 @@
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Kraeken en Krønen HKS FO.exe.config
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Kraeken en Krønen HKS FO.exe
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Kraeken en Krønen HKS FO.pdb
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\BouncyCastle.Crypto.dll
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Google.Protobuf.dll
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\MaterialDesignColors.dll
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\MySql.Data.dll
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Renci.SshNet.dll
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Ubiety.Dns.Core.dll
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Google.Protobuf.xml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\MaterialDesignColors.pdb
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\MySql.Data.xml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\bin\Debug\Renci.SshNet.xml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\MainWindow.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\App.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO_MarkupCompile.cache
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO_MarkupCompile.lref
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\App.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\MainWindow.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.g.resources
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken_en_Krønen_HKS_FO.Properties.Resources.resources
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.csproj.GenerateResource.cache
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.csproj.CoreCompileInputs.cache
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.csproj.CopyComplete
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.exe
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.pdb
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Kraeken en Krønen HKS FO.csprojAssemblyReference.cache
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ZendersPage.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ZendersPage.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\UserControls\NewZenderLayout.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\UserControls\NewZenderLayout.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\UserControls\ProgrammaOverzichtLayout.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\UserControls\ProgrammaOverzichtLayout.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\LoginPage.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\LoginPage.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ProgrammasPage.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\ProgrammasPage.baml
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\NummersPage.g.cs
+D:\School\Examen voorbereiding 2020\Kraeken en Krønen HKS FO Toets ontwerpen\Kraeken en Krønen HKS FO\Kraeken en Krønen HKS FO\obj\Debug\Pages\NummersPage.baml

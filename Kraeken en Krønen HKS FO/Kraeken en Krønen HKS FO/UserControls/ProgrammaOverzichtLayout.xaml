@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Kraeken_en_Krønen_HKS_FO.UserControls.ProgrammaOverzichtLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kraeken_en_Krønen_HKS_FO.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="#FF3F3F46"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2px" BorderBrush="#FF62626A" Margin="10">
+            <StackPanel>
+                <Label Content="Programma" Foreground="White" FontSize="18px" FontWeight="Bold"/>
+                <Label Content="Naam programma:" Foreground="White" FontSize="18px" Margin="0,5,0,0" x:Name="NaamProgramma"/>
+                <Label Content="Datum:" Foreground="White" FontSize="18px" x:Name="DatumProgramma"/>
+                <Label Content="Begintijd:" Foreground="White" FontSize="18px" Margin="0,10,0,0" x:Name="BegintijdProgramma"/>
+                <Label Content="Eindtijd:" Foreground="White" FontSize="18px" x:Name="EindTijdProgramma"/>
+                <Label Content="Presentator:" Foreground="White" FontSize="18px" Margin="0,10,0,0" x:Name="PresentatorProgramma"/>
+                <Label Content="Zender:" Foreground="White" FontSize="18px" Margin="0,10,0,0" x:Name="ZenderNaamProgramma"/>
+                <Label Content="Playlist" Foreground="White" FontSize="18px" FontWeight="Bold" Margin="0,10,0,0"/>
+                <DataGrid x:Name="PlaylistGrid" AutoGenerateColumns="true" ItemsSource="{Binding}"/>
+                <Label Content="Totaal" Foreground="White" FontSize="18px" FontWeight="Bold" Margin="0,10,0,0" x:Name="TotaleTijd"/>
+            </StackPanel>
+        </Border>
+        
+
+
+    </Grid>
+</UserControl>

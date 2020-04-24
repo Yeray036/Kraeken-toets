@@ -1,0 +1,108 @@
+﻿<Page x:Class="Kraeken_en_Krønen_HKS_FO.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kraeken_en_Krønen_HKS_FO.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1080"
+      Title="LoginPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="#FF3F3F46"
+      FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid Background="#FF3F3F46" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock Text="Login" FontSize="30px" Foreground="White" HorizontalAlignment="Center" x:Name="LoginLabel"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" x:Name="LoginFields">
+            <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="0,0,0,10" materialDesign:HintAssist.Hint="Naam" x:Name="UserName"/>
+            <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="0,0,0,10" materialDesign:HintAssist.Hint="tussenvoegsel" x:Name="Tussenvoegsel"/>
+            <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="0,0,0,10" materialDesign:HintAssist.Hint="Achternaam" x:Name="Achternaam"/>
+            <PasswordBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" materialDesign:HintAssist.Hint="Wachtwoord" x:Name="Password"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" x:Name="AllMedewerkers" Margin="0,0,0,10" >
+            <DataGrid x:Name="AllMedewerkersGrid" ItemsSource="{Binding}" AutoGenerateColumns="True" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Wijzig">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Foreground="White" Content="wijzig" Margin="0,0,5,0" Click="WijzigMedewerkerBtn"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Verwijder">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Foreground="White" Content="verwijder" Margin="0,0,5,0" Click="VerwijderMedewerkerBtn"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="LoginBtnStack" Orientation="Vertical">
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40px" Click="InloggenBtn" x:Name="ActualBtn" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Login" Height="32px" Width="25px"/>
+                    <Label Foreground="White" Content="inloggen" FontSize="20px"/>
+                </StackPanel>
+            </Button>
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40px" Click="UitloggenBtn" x:Name="UitlogBtn" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Logout" Height="32px" Width="25px"/>
+                    <Label Foreground="White" Content="Uitloggen" FontSize="20px"/>
+                </StackPanel>
+            </Button>
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40px" Click="RegisterBtn" x:Name="Register" Margin="0,0,0,8">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Register" Height="32px" Width="25px"/>
+                    <Label Foreground="White" Content="Registreren" FontSize="20px"/>
+                </StackPanel>
+            </Button>
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40px" Click="GebruikerAanmakenBtn" x:Name="Aanmaken" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Send" Height="32px" Width="25px"/>
+                    <Label Foreground="White" Content="Toevoegen" FontSize="20px"/>
+                </StackPanel>
+            </Button>
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40px" Click="TerugBtn" x:Name="Terug" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="ArrowBack" Height="32px" Width="25px"/>
+                    <Label Foreground="White" Content="Terug" FontSize="20px"/>
+                </StackPanel>
+            </Button>
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40px" Click="NieuweMedewerkerBtn" x:Name="NieuweMedewerker" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Person" Height="32px" Width="25px"/>
+                    <Label Foreground="White" Content="Nieuwe medewerker" FontSize="20px"/>
+                </StackPanel>
+            </Button>
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40px" Click="AddNewMedewerkerBtn" x:Name="AddNewMedewerker" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Send" Height="32px" Width="25px"/>
+                    <Label Foreground="White" Content="Toevoegen" FontSize="20px"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

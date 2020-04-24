@@ -1,0 +1,108 @@
+﻿<Page x:Class="Kraeken_en_Krønen_HKS_FO.Pages.NummersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kraeken_en_Krønen_HKS_FO.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="NummersPage"
+xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="#FF3F3F46"
+      FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid Background="#FF3F3F46" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="10,5" >
+            <materialDesign:Card Background="#FF3F3F46">
+                <StackPanel Orientation="Vertical">
+                    <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,10,10,5" x:Name="SearchNummer" materialDesign:HintAssist.Hint="Zoek nummer"/>
+                    <Button HorizontalAlignment="Left" Margin="10,5,0,10" Click="SearchNummerBtn" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="SendOutline" Width="20px" Height="25px"/>
+                            <Label VerticalAlignment="Center" FontSize="15px" Foreground="#DDFFFFFF">Zoek</Label>
+                        </StackPanel>
+                    </Button>
+
+                    <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,10,10,5" x:Name="SearchArtiest" materialDesign:HintAssist.Hint="Zoek artiest"/>
+                    <Button HorizontalAlignment="Left" Margin="10,5,0,10" Click="SearchArtiestBtn" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="SendOutline" Width="20px" Height="25px"/>
+                            <Label VerticalAlignment="Center" FontSize="15px" Foreground="#DDFFFFFF">Zoek</Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </materialDesign:Card>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="10,10,10,5" >
+            <DataGrid x:Name="DetailedNummerGrid" AutoGenerateColumns="true" ItemsSource="{Binding}" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Verwijder nummer">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Foreground="White" Content="verwijder" Margin="0,0,5,0" Click="VerwijderSongBtn"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Speel nummer">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Foreground="White" Margin="0,0,5,0" Click="PlaySongBtn">
+                                    <materialDesign:PackIcon Kind="Play"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="10,10,10,0" >
+            <materialDesign:Card Background="#FF3F3F46">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="20px" FontWeight="Bold" Foreground="White" Content="Nieuw nummer toevoegen"/>
+                    <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,10,10,0" x:Name="NewArtiest" materialDesign:HintAssist.Hint="Artiest"/>
+                    <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,5" x:Name="NewTitel" materialDesign:HintAssist.Hint="Titel"/>
+                    <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,0,10,5" x:Name="NewDuur" materialDesign:HintAssist.Hint="Duur in minuten 'mm:ss'"/>
+                    <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" FontSize="15px" Content="example: https://www.youtube.com/watch?v=" Margin="10,0,0,0"/>
+                    <Label Foreground="Red" FontSize="15px" Content="l482T0yNkeo" Margin="0"/>
+                    </StackPanel>
+                    <TextBox Foreground="White" FontSize="20px" Background="#FF62626A" Height="30px" Margin="10,0,10,5" x:Name="YoutubeIdText" materialDesign:HintAssist.Hint="l482T0yNkeo"/>
+                        <StackPanel HorizontalAlignment="Left" Margin="10,0,0,5" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label Foreground="White" FontSize="20px" Content="playlist:" VerticalAlignment="Center"/>
+                        <ComboBox Foreground="White" FontSize="20px" x:Name="playlistCombobox" Background="#FF62626A" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5,0" Loaded="FillCombobox"/>
+                    </StackPanel>
+                    <Button HorizontalAlignment="Left" Margin="10,5,0,10" Click="SendNewSongBtn" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="SendOutline" Width="20px" Height="25px"/>
+                            <Label VerticalAlignment="Center" FontSize="15px" Foreground="#DDFFFFFF">Verzend</Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </materialDesign:Card>
+        </StackPanel>
+
+        <WebBrowser x:Name="YoutubePlayer" Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        
+    </Grid>
+</Page>
