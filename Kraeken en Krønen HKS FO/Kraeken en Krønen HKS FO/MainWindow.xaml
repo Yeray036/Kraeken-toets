@@ -116,7 +116,7 @@
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
             <ScrollViewer Foreground="#FF62626A" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <Frame x:Name="pageFrame" NavigationUIVisibility="Hidden" Panel.ZIndex="200"/>
+            <Frame x:Name="pageFrame" NavigationUIVisibility="Hidden" Panel.ZIndex="400"/>
             </ScrollViewer>
         </Grid>
     </Grid>

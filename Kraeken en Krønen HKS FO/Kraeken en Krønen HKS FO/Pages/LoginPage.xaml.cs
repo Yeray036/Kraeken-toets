@@ -1,6 +1,7 @@
 ﻿using Kraeken_en_Krønen_HKS_FO.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                 LoginBtnStack.Children.Remove(Terug);
                 LoginBtnStack.Children.Remove(NieuweMedewerker);
                 LoginBtnStack.Children.Remove(AddNewMedewerker);
+                AllMedewerkers.Children.Remove(AllMedewerkersGrid);
             }
             catch (Exception ex)
             {
@@ -61,6 +63,9 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                         if (UserCredentials.Medewerker == 1)
                         {
                             LoginBtnStack.Children.Add(NieuweMedewerker);
+                            Login.GetAllMedewerkersFromDb();
+                            AllMedewerkersGrid.DataContext = Medewerkers.MedewerkersNameTable.DefaultView;
+                            AllMedewerkers.Children.Add(AllMedewerkersGrid);
                         }
                     }
                     else
@@ -90,6 +95,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                 LoginBtnStack.Children.Add(Register);
                 LoginBtnStack.Children.Remove(UitlogBtn);
                 LoginBtnStack.Children.Remove(NieuweMedewerker);
+                AllMedewerkers.Children.Remove(AllMedewerkersGrid);
                 UserName.Text = "";
                 Tussenvoegsel.Text = "";
                 Achternaam.Text = "";
@@ -127,6 +133,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                 LoginBtnStack.Children.Remove(ActualBtn);
                 LoginBtnStack.Children.Remove(Register);
                 LoginBtnStack.Children.Remove(NieuweMedewerker);
+                AllMedewerkers.Children.Remove(AllMedewerkersGrid);
             }
             catch (Exception ex)
             {
@@ -150,7 +157,8 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                         LoginFields.Children.Remove(Achternaam);
                         LoginBtnStack.Children.Add(ActualBtn);
                         LoginBtnStack.Children.Add(Register);
-                        LoginBtnStack.Children.Remove(NieuweMedewerker);
+                        LoginBtnStack.Children.Remove(NieuweMedewerker); 
+                        AllMedewerkers.Children.Remove(AllMedewerkersGrid);
                     }
                     else
                     {
@@ -185,6 +193,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                     LoginFields.Children.Remove(Tussenvoegsel);
                     LoginFields.Children.Remove(Achternaam);
                     LoginFields.Children.Add(Password);
+                    AllMedewerkers.Children.Remove(AllMedewerkersGrid);
                     LoginBtnStack.Children.Remove(Aanmaken);
                     LoginBtnStack.Children.Remove(Terug);
                     LoginBtnStack.Children.Add(ActualBtn);
@@ -203,6 +212,10 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                     LoginFields.Children.Remove(Tussenvoegsel);
                     LoginFields.Children.Remove(Achternaam);
                     LoginFields.Children.Remove(Password);
+                    AllMedewerkers.Children.Remove(AllMedewerkersGrid);
+                    Login.GetAllMedewerkersFromDb();
+                    AllMedewerkersGrid.DataContext = Medewerkers.MedewerkersNameTable.DefaultView;
+                    AllMedewerkers.Children.Add(AllMedewerkersGrid);
                     LoginBtnStack.Children.Add(UitlogBtn);
                     LoginBtnStack.Children.Add(NieuweMedewerker);
                 }
@@ -224,6 +237,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                 Password.Password = "";
                 LoginBtnStack.Children.Remove(UitlogBtn);
                 LoginBtnStack.Children.Remove(NieuweMedewerker);
+                AllMedewerkers.Children.Remove(AllMedewerkersGrid);
                 LoginFields.Children.Add(UserName);
                 LoginFields.Children.Add(Tussenvoegsel);
                 LoginFields.Children.Add(Achternaam);
@@ -254,6 +268,9 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                         LoginFields.Children.Remove(Tussenvoegsel);
                         LoginFields.Children.Remove(Achternaam);
                         LoginFields.Children.Remove(Password);
+                        Login.GetAllMedewerkersFromDb();
+                        AllMedewerkersGrid.DataContext = Medewerkers.MedewerkersNameTable.DefaultView;
+                        AllMedewerkers.Children.Add(AllMedewerkersGrid);
                         LoginBtnStack.Children.Add(UitlogBtn);
                         LoginBtnStack.Children.Add(NieuweMedewerker);
                     }
@@ -266,6 +283,54 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void WijzigMedewerkerBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataRowView row = (DataRowView)AllMedewerkersGrid.SelectedItems[0];
+                string medewerkerNaam = row["naam"].ToString();
+                Login.GetGebruikerId(medewerkerNaam);
+                AllMedewerkersGrid.CommitEdit();
+                AllMedewerkersGrid.CommitEdit();
+                AllMedewerkersGrid.Items.Refresh();
+                DataRowView rownew = (DataRowView)AllMedewerkersGrid.SelectedItems[0];
+                string NewNaam = rownew["naam"].ToString();
+                Login.UpdateMedewerkerFromDb(NewNaam, Medewerkers.GebruikersId);
+                Login.GetAllMedewerkersFromDb();
+                AllMedewerkersGrid.DataContext = Medewerkers.MedewerkersNameTable.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
+
+        private void VerwijderMedewerkerBtn(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataRowView row = (DataRowView)AllMedewerkersGrid.SelectedItems[0];
+                string medewerkerNaam = row["naam"].ToString();
+                Login.GetGebruikerId(medewerkerNaam);
+
+                MessageBoxResult result = MessageBox.Show($"Wil je {medewerkerNaam} verwijderen?", $"Verwijder medewerker", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        Login.VerwijderMedewerkerFromDb(medewerkerNaam, Medewerkers.GebruikersId);
+                        Login.GetAllMedewerkersFromDb();
+                        AllMedewerkersGrid.DataContext = Medewerkers.MedewerkersNameTable.DefaultView;
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -267,11 +267,11 @@ namespace Kraeken_en_Krønen_HKS_FO.Classes
             }
         }
 
-        public void AddNewSongToDb(string artiest, string titel, string duur_in_minuten, int playlistId)
+        public void AddNewSongToDb(string artiest, string titel, string duur_in_minuten, int playlistId, string youtubeId)
         {
             try
             {
-                var query = $"INSERT INTO `songs` (`artiest`, `titel`, `duur_in_minuten`, `playlistId`) VALUES ('{artiest}', '{titel}', '{duur_in_minuten}', '{playlistId}')";
+                var query = $"INSERT INTO `songs` (`artiest`, `titel`, `duur_in_minuten`, `playlistId`, 'youtubeId') VALUES ('{artiest}', '{titel}', '{duur_in_minuten}', '{playlistId}', '{youtubeId}')";
                 var cmd = new MySqlCommand(query, ConnectionVariables.conn);
 
                 ConnectionVariables.conn.Open();

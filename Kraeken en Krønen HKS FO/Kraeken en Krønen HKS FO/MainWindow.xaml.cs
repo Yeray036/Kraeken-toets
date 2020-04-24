@@ -26,7 +26,7 @@ namespace Kraeken_en_Krønen_HKS_FO
         MainWindow home;
 
         LoginPage loginPage = new LoginPage();
-
+        NummersPage nummersPage = new NummersPage();
         public MainWindow Home { get => home; set => home = value; }
 
         public MainWindow()
@@ -146,7 +146,7 @@ namespace Kraeken_en_Krønen_HKS_FO
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message);
+               Console.WriteLine("ERROR: " + ex.Message);
             }
         }
 
@@ -162,12 +162,11 @@ namespace Kraeken_en_Krønen_HKS_FO
                 {
                     LoginLabel.Content = UserCredentials.UserName;
                 }
-                NummersPage nummersPage = new NummersPage();
                 pageFrame.Navigate(nummersPage);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message);
+                Console.WriteLine("ERROR: " + ex.Message);
             }
         }
     }

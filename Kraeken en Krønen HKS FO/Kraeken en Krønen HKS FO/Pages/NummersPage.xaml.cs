@@ -23,6 +23,8 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
     public partial class NummersPage : Page
     {
         SearchProgramma SearchProgramma = new SearchProgramma();
+
+        Youtube Youtube = new Youtube();
         public NummersPage()
         {
             InitializeComponent();
@@ -51,7 +53,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message);
+                Console.WriteLine("ERROR: " + ex.Message);
             }
         }
 
@@ -77,7 +79,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message);
+                Console.WriteLine("ERROR: " + ex.Message);
             }
         }
 
@@ -105,7 +107,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message);
+                Console.WriteLine("ERROR: " + ex.Message);
             }
         }
 
@@ -116,7 +118,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
                 if (NewArtiest.Text != string.Empty && NewTitel.Text != string.Empty && NewDuur.Text != string.Empty && playlistCombobox.SelectedValue != null)
                 {
                     int playlistId = int.Parse(playlistCombobox.SelectedValue.ToString());
-                    SearchProgramma.AddNewSongToDb(NewArtiest.Text, NewTitel.Text, NewDuur.Text, playlistId);
+                    SearchProgramma.AddNewSongToDb(NewArtiest.Text, NewTitel.Text, NewDuur.Text, playlistId, YoutubeIdText.Text);
                     NewTitel.Text = "";
                     NewDuur.Text = "";
                     playlistCombobox.SelectedItem = null;
@@ -134,7 +136,7 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message);
+                Console.WriteLine("ERROR: " + ex.Message);
             }
         }
 
@@ -151,7 +153,32 @@ namespace Kraeken_en_Krønen_HKS_FO.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message);
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
+        }
+
+        private void PlaySongBtn(object sender, RoutedEventArgs e)
+        {
+            string baseUrl = "https://www.youtube.com/watch?v=";
+            try
+            {
+                DataRowView row = (DataRowView)DetailedNummerGrid.SelectedItems[0];
+                string nummerNaam = row["titel"].ToString();
+                string nummerArtiest = row["artiest"].ToString();
+                Youtube.GetYoutubeId(nummerArtiest, nummerNaam);
+                if (Youtube.YoutubeId != String.Empty)
+                {
+                    YoutubePlayer.Navigate(baseUrl+Youtube.YoutubeId);
+                    YoutubePlayer.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
             }
         }
     }
